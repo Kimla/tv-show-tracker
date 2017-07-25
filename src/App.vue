@@ -1,10 +1,8 @@
-<template>
-    <div id="app">
-        <navigation></navigation>
-        <div class="page">
-            <router-view></router-view>
-        </div>
-    </div>
+<template lang="pug">
+    div#app
+        navigation
+        div.page
+            router-view
 </template>
 
 <script>

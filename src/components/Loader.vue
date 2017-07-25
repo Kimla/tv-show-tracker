@@ -1,20 +1,18 @@
-<template>
-    <div class="preloader fl100">
-        <div class="sk-fading-circle">
-          <div class="sk-circle1 sk-circle"></div>
-          <div class="sk-circle2 sk-circle"></div>
-          <div class="sk-circle3 sk-circle"></div>
-          <div class="sk-circle4 sk-circle"></div>
-          <div class="sk-circle5 sk-circle"></div>
-          <div class="sk-circle6 sk-circle"></div>
-          <div class="sk-circle7 sk-circle"></div>
-          <div class="sk-circle8 sk-circle"></div>
-          <div class="sk-circle9 sk-circle"></div>
-          <div class="sk-circle10 sk-circle"></div>
-          <div class="sk-circle11 sk-circle"></div>
-          <div class="sk-circle12 sk-circle"></div>
-        </div>
-    </div>
+<template lang="pug">
+    div.preloader
+        div.sk-fading-circle
+            div.sk-circle1.sk-circle
+            div.sk-circle2.sk-circle
+            div.sk-circle3.sk-circle
+            div.sk-circle4.sk-circle
+            div.sk-circle5.sk-circle
+            div.sk-circle6.sk-circle
+            div.sk-circle7.sk-circle
+            div.sk-circle8.sk-circle
+            div.sk-circle9.sk-circle
+            div.sk-circle10.sk-circle
+            div.sk-circle11.sk-circle
+            div.sk-circle12.sk-circle
 </template>
 
 <script>

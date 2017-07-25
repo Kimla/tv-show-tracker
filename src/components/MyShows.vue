@@ -1,10 +1,9 @@
-<template>
-    <div class="my-shows">
-        <showList v-if="myShows" v-bind:shows="myShows"></showList>
-        <div v-else>
-            <h3>You have no saved shows, find them <router-link :to="'/search'">here!</router-link></h3>
-        </div>
-    </div>
+<template lang="pug">
+    div.my-shows
+        showList( v-if="myShows" :shows="myShows" )
+        div.my-shows__message( v-else )
+            h3 You have no saved shows, find them
+                router-link(:to="'/search'") here!
 </template>
 
 <script>

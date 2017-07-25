@@ -1,15 +1,11 @@
-<template>
-    <div v-if="season" class="show-season">
-        <div class="show-season__header">
-            <h3 @click="toggle()">{{ season.label }}</h3>
-        </div>
-        <div v-if="isOpen" class="episodes">
-            <div class="episode" v-for="episode in season.episodes">
-                <h4>{{ episode.name }}</h4>
-                <p>Airdate: {{ episode.airdate }}</p>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+    div.show-season( v-if="season" )
+        div.show-season__header
+            h3.show-season__heading( @click="toggle()" ) {{ season.label }}
+        div.episodes( v-if="isOpen" )
+            div.episode( v-for="episode in season.episodes" )
+                h4.episode.title {{ episode.name }}
+                p.episode.airdate Airdate: {{ episode.airdate }}
 </template>
 
 <script>

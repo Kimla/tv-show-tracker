@@ -1,36 +1,32 @@
-<template>
-    <div v-if="show" class="show">
-        <div v-if="show.image" @click="showTrailer()" class="show__image-holder">
-            <img :src="show.image.medium" alt="">
-        </div>
-        <h1 class="show__title">{{ show.name }}</h1>
-        <p class="show__genres">{{ show.genres.join(", ") }}</p>
-        <div class="show__summary" v-html="show.summary"></div>
+<template lang="pug">
+    div.show(v-if="show")
 
-        <p><strong>Latest epsiode:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - {{ currentEpisodes.latest.name }} ({{ currentEpisodes.latest.airdate }})</p>
-        <p v-if="currentEpisodes.next"><strong>Next epsiode:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - {{ currentEpisodes.next.name }} ({{ currentEpisodes.next.airdate }})</p>
+        div.show__image-holder( v-if="show.image" @click="showTrailer()" )
+            img.show__image( :src="show.image.medium" )
 
-        <span v-if="!isSaved" @click="saveShow()" class="save-button">
+        h1.show__title {{ show.name }}
+        p.show__genres {{ show.genres.join(", ") }}
+        div.show__summary( v-html="show.summary" )
+
+        p <strong>Latest epsiode:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - {{ currentEpisodes.latest.name }} ({{ currentEpisodes.latest.airdate }})
+        p( v-if="currentEpisodes.next" ) <strong>Next epsiode:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - {{ currentEpisodes.next.name }} ({{ currentEpisodes.next.airdate }})
+
+        span.save-button( v-if="!isSaved" @click="saveShow()" )
             <svg fill="#607D8B" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
                 <path d="M0 0h24v24H0z" fill="none"/>
             </svg>
-        </span>
-        <span v-if="isSaved" @click="deleteShow()" class="delete-button">
+
+        span.delete-button( v-if="isSaved" @click="deleteShow()" )
             <svg fill="#607D8B" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                 <path d="M0 0h24v24H0z" fill="none"/>
             </svg>
-        </span>
 
-        <div class="seasons">
-            <div v-for="season in seasons">
-                <showSeason v-bind:season="season"></showSeason>
-            </div>
-        </div>
-
-    </div>
+        div.seasons
+            div.season-holder( v-for="season in seasons" )
+                showSeason( :season="season" )
 </template>
 
 <script>

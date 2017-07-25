@@ -1,9 +1,6 @@
-<template>
-    <router-link :to="button.link" class="button">
-        <div class="button__inner">
-            {{ button.label }}
-        </div>
-    </router-link>
+<template lang="pug">
+    router-link.button( :to="button.link" )
+        div.button__inner {{ button.label }}
 </template>
 
 <script>

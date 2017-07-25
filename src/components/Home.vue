@@ -1,10 +1,8 @@
-<template>
-    <div class="home">
-        <heroSection></heroSection>
-        <div class="popular-shows">
-            <h2>Popular shows</h2>
-        </div>
-    </div>
+<template lang="pug">
+    div.home
+        heroSection
+        div.popular-shows
+            h2 Popular shows
 </template>
 
 <script>

@@ -1,7 +1,6 @@
-<template>
-    <div class="settings">
-        <h1>Settings</h1>
-    </div>
+<template lang="pug">
+    div.settings
+        h1 Settings
 </template>
 
 <script>

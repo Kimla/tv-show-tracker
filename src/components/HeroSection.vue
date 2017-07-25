@@ -1,15 +1,12 @@
-<template>
-    <div class="hero-section">
-        <img class="hero-section__background" :src="item.src" alt="">
-        <div class="hero-section__overlay"></div>
-        <div class="hero-section__inner">
-            <h1>Tv shows</h1>
-            <p>Keep track of your favorite tv shows.</p>
-            <div class="hero-section__buttons">
-                <buttonEl v-for="(button, key) in buttons" :key="key" v-bind:button="button"></buttonEl>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+    div.hero-section
+        img.hero-section__background( :src="item.src" )
+        div.hero-section__overlay
+        div.hero-section__inner
+            h1.hero-section__heading Tv shows
+            p.hero-section__ingress Keep track of your favorite tv shows.
+            div.hero-section__buttons
+                buttonEl( v-for="(button, key) in buttons" :key="key" :button="button" )
 </template>
 
 <script>

@@ -1,17 +1,12 @@
-<template>
-    <div class="show-list">
-        <router-link :to="'/show/'+show.id" class="show-list-item" v-for="(show, key) in shows" :key="show.id">
-            <div class="show-list-item__image-holder" v-if="show.image">
-                <img :src="show.image.medium">
-            </div>
-            <div class="show-list-item__content">
-                <div class="show-list-item__content-inner">
-                    <h2 class="show-list-item__title">{{ show.name }}</h2>
-                    <p class="show-list-item__genres">{{ show.genres.join(", ") }}</p>
-                </div>
-            </div>
-        </router-link>
-    </div>
+<template lang="pug">
+    div.show-list
+        router-link.show-list-item( v-for="(show, key) in shows" :key="show.id" :to="'/show/'+show.id" )
+            div.show-list-item__image-holder( v-if="show.image" )
+                img.show-list-item__image( :src="show.image.medium" )
+            div.show-list-item__content
+                div.show-list-item__content-inner
+                    h2.show-list-item__title {{ show.name }}
+                    p.show-list-item__genres {{ show.genres.join(", ") }}
 </template>
 
 <script>
