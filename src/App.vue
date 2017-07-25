@@ -71,4 +71,35 @@ export default {
     strong {
         font-weight: 600;
     }
+    .form {
+        width: 500px;
+        margin: 0 auto;
+        max-width: 100%;
+        .input-holder {
+            margin-bottom: 16px;
+        }
+        .input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #e8e8e8;
+            outline: 0;
+            border-radius: 0;
+            -webkit-appearance: none;
+            transition: border-color 0.25s;
+            &:focus {
+                border-color: #2196F3;
+            }
+        }
+        .label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .button {
+            margin: 0;
+        }
+        .button-holder {
+            text-align: right;
+        }
+    }
 </style>

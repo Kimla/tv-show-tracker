@@ -1,5 +1,8 @@
 <template lang="pug">
-    router-link.button( :to="button.link" )
+    router-link.button( v-if="button.link" :to="button.link" )
+        div.button__inner {{ button.label }}
+
+    div.button( v-else @click="clicked()" )
         div.button__inner {{ button.label }}
 </template>
 
@@ -7,19 +10,21 @@
 
 export default {
     name: 'button',
-    props: ['button']
+    props: ['button'],
+    methods: {
+        clicked() {
+            this.$emit('Clicked');
+        }
+    }
 }
 </script>
 
 <style lang="scss">
     .button {
-        -ms-flex-align: center;
         align-items: center;
         border-radius: 2px;
-        display: -ms-inline-flexbox;
         display: inline-flex;
         height: 36px;
-        -ms-flex: 0 1 auto;
         flex: 0 1 auto;
         font-size: 12px;
         font-weight: 500;
@@ -40,11 +45,9 @@ export default {
         border-color: #009688;
         letter-spacing: 1px;
         &__inner {
-            -ms-flex-align: center;
             align-items: center;
             border-radius: inherit;
             color: inherit;
-            display: -ms-flexbox;
             display: flex;
             height: 100%;
             -ms-flex: 1 0 auto;
