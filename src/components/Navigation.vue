@@ -1,14 +1,10 @@
-<template>
-    <nav class="navigation">
-        <ul class="navigation__list">
-            <li class="navigation__list-item" v-for="item,key in menuItems">
-                <router-link :to="item.path" class="navigation__link" v-bind:class="{ 'is-active': item.isActive }">
-                    <img :src="item.icon" :alt="key">
-                </router-link>
-            </li>
-        </ul>
-        <span class="navigation__active-bar" v-bind:style="{ left: activeBarPosition + '%' }"></span>
-    </nav>
+<template lang="pug">
+    nav.navigation
+        ul.navigation__list
+            li.navigation__list-item( v-for="item,key in menuItems" )
+                router-link.navigation__link( :to="item.path" )
+                    img.navigation__icon( :src="item.icon" :alt="key" )
+        span.navigation__active-bar( :style="{ left: activeBarPosition + '%' }" )
 </template>
 
 <script>
