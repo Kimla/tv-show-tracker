@@ -41,6 +41,9 @@ export default {
         border: 0;
         outline: 0;
     }
+    a {
+        color: #2196F3;
+    }
     ul,
     p,
     h1,

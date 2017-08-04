@@ -4,14 +4,18 @@
 
         div.input-holder
             label.label( for="email" ) Email
-            input.input( type="email" id="email" name="email" )
+            input.input( type="email" id="email" name="email" v-model="email" )
 
         div.input-holder
             label.label( for="password" ) Password
-            input.input( type="password" id="password" name="password" )
+            input.input( type="password" id="password" name="password" v-model="password" )
 
-        div.button-holder
-            buttonEl( :button="{ label: 'Login' }" @Clicked="login()" )
+        div.login__bottom
+            div.register-link-holder
+                router-link.register-link( to="/register" ) Don't have an account?
+
+            div.button-holder
+                buttonEl( :button="{ label: 'Login' }" @Clicked="login()" )
 </template>
 
 <script>
@@ -24,7 +28,8 @@ export default {
     },
     data() {
         return {
-
+            email: '',
+            password: '',
         }
     },
     methods: {
@@ -37,6 +42,13 @@ export default {
 
 <style lang="scss">
     .login {
-
+        &__bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    .register-link {
+        font-size: 15px;
     }
 </style>

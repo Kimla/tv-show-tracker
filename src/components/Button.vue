@@ -21,6 +21,7 @@ export default {
 
 <style lang="scss">
     .button {
+        cursor: pointer;
         align-items: center;
         border-radius: 2px;
         display: inline-flex;
