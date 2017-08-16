@@ -34,6 +34,10 @@ export default {
     },
     methods: {
         login() {
+            if ( this.email.length < 1 || this.password.length < 1 ) {
+                // TODO: Add error message
+                return false;
+            }
             console.log("login");
         }
     }

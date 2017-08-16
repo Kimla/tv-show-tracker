@@ -2,7 +2,8 @@
     div#app
         navigation
         div.page
-            router-view
+            transition(name="transform" mode="out-in")
+                router-view
 </template>
 
 <script>
@@ -105,4 +106,24 @@ export default {
             text-align: right;
         }
     }
+    
+    .transform-enter {
+        opacity: 0;
+        transform: translateY(30px)
+    }
+
+    .transform-enter-active {
+        transition: 0.25s;
+    }
+
+    .transform-leave {
+
+    }
+
+    .transform-leave-active {
+        transition: 0.25s;
+        opacity: 0;
+        transform: translateY(30px)
+    }
+
 </style>
