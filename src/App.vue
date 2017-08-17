@@ -106,7 +106,7 @@ export default {
             text-align: right;
         }
     }
-    
+
     .transform-enter {
         opacity: 0;
         transform: translateY(30px)
@@ -123,7 +123,6 @@ export default {
     .transform-leave-active {
         transition: 0.25s;
         opacity: 0;
-        transform: translateY(30px)
     }
 
 </style>
