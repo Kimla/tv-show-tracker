@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home.vue';
-import Login from '../components/Login.vue';
-import Register from '../components/Register.vue';
-import Search from '../components/Search.vue';
-import myShows from '../components/MyShows.vue'
-import settings from '../components/Settings.vue'
-import show from '../components/Show.vue'
+import Home from '@/pages/Home.vue';
+import Login from '@/pages/Login.vue';
+import Register from '@/pages/Register.vue';
+import Search from '@/pages/Search.vue';
+import myShows from '@/pages/MyShows.vue'
+import settings from '@/pages/Settings.vue'
+import show from '@/pages/Show.vue'
 
 Vue.use(Router)
 

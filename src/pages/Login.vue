@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import buttonEl from './Button.vue'
+import buttonEl from '@/components/Button.vue'
 
 export default {
     name: 'login',

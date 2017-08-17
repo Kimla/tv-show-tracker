@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import showSeason from './ShowSeason.vue'
+import showSeason from '@/components/ShowSeason.vue'
 
 export default {
     name: 'show',

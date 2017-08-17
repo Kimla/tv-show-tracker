@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import showList from './ShowList.vue'
-import loader from './Loader.vue'
+import showList from '@/components/ShowList.vue'
+import loader from '@/components/Loader.vue'
 
 export default {
     name: 'search',
