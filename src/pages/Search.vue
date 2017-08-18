@@ -14,8 +14,9 @@
 </template>
 
 <script>
-import showList from '@/components/ShowList.vue'
-import loader from '@/components/Loader.vue'
+import axios from 'axios';
+import showList from '@/components/ShowList.vue';
+import loader from '@/components/Loader.vue';
 
 export default {
     name: 'search',
@@ -44,21 +45,23 @@ export default {
     methods: {
         searchHandler() {
             this.isLoading = true;
-            let url = 'http://api.tvmaze.com/search/shows?q=' + this.keyword;
             this.zeroResults = false;
-            var self = this;
-            fetch(url, {
-                method: 'GET',
-            }).then(function(response) {
-                return response.json();
-            }).then(function(data) {
-                if ( data.length < 1 ) {
-                    self.zeroResults = true;
+            const vm = this;
+
+            axios.get('http://api.tvmaze.com/search/shows', {
+                params: {
+                    q: vm.keyword
                 }
-                self.shows = data;
-                self.isLoading = false;
-            }).catch(function(response) {
-                console.log(response);
+            })
+            .then(function (response) {
+                if ( response.data.length < 1 ) {
+                    vm.zeroResults = true;
+                }
+                vm.shows = response.data;
+                vm.isLoading = false;
+            })
+            .catch(function (error) {
+                console.log(error);
             });
         },
     },

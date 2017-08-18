@@ -1,7 +1,7 @@
 <template lang="pug">
     div.show(v-if="show")
 
-        div.show__image-holder( v-if="show.image" @click="showTrailer()" )
+        div.show__image-holder( v-if="show.image" )
             img.show__image( :src="show.image.medium" )
 
         h1.show__title {{ show.name }}
@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import showSeason from '@/components/ShowSeason.vue'
+import axios from 'axios';
+import showSeason from '@/components/ShowSeason.vue';
 
 export default {
     name: 'show',
@@ -51,9 +52,6 @@ export default {
         deleteShow() {
             this.$store.dispatch('REMOVE_FROM_MY_SHOWS', { show: this.show })
         },
-        showTrailer() {
-            console.log("show trailer");
-        }
     },
     computed: {
         isSaved () {
@@ -104,18 +102,17 @@ export default {
         }
     },
     mounted() {
-        let url = 'http://api.tvmaze.com/shows/' + this.id + '?embed=episodes';
-        var self = this;
-        fetch(url, {
-            method: 'GET',
-        }).then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            self.show = data;
-            console.log(self.show.image.original);
-            console.log(data);
-        }).catch(function(response) {
-            console.log(response);
+        const vm = this;
+        axios.get(`http://api.tvmaze.com/shows/${this.id}`, {
+            params: {
+                embed: 'episodes'
+            }
+        })
+        .then(function (response) {
+            vm.show = response.data;
+        })
+        .catch(function (error) {
+            console.log(error);
         });
     }
 }
