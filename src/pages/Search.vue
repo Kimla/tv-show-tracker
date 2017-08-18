@@ -7,7 +7,7 @@
                     <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                     <path d="M0 0h24v24H0z" fill="none"/>
                 </svg>
-        showList( v-if="shows.length > 0" :shows="showsFiltered" )
+        showList( v-if="showsData.length > 0" :shows="shows" )
         loader( v-if="isLoading" )
         div.message( v-if="zeroResults" )
             p No results, try again!
@@ -26,20 +26,15 @@ export default {
     },
     data () {
         return {
-            shows: [],
+            showsData: [],
             keyword: "",
             zeroResults: false,
             isLoading: false
         }
     },
     computed: {
-        showsFiltered() {
-            let shows = [];
-            for (var i = 0; i < this.shows.length; i++) {
-                let show = this.shows[i].show;
-                shows.push(show);
-            }
-            return shows;
+        shows() {
+            return this.showsData.map(item => item.show);
         }
     },
     methods: {
@@ -57,7 +52,7 @@ export default {
                 if ( response.data.length < 1 ) {
                     vm.zeroResults = true;
                 }
-                vm.shows = response.data;
+                vm.showsData = response.data;
                 vm.isLoading = false;
             })
             .catch(function (error) {
