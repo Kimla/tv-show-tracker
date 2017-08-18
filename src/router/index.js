@@ -19,6 +19,6 @@ export default new Router({
         { path: '/search', name: 'search', component: Search },
         { path: '/my-shows', name: 'myShows', component: myShows },
         { path: '/settings', name: 'settings', component: settings },
-        { path: '/show/:id', name: 'show', component: show }
+        { path: '/show/:id/:slug', name: 'show', component: show }
     ]
 })

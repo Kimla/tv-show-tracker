@@ -1,5 +1,5 @@
 <template lang="pug">
-    router-link.show-list-item(  :to="'/show/'+show.id" )
+    router-link.show-list-item(  :to="link" )
         div.show-list-item__image-holder( v-if="show.image" )
             img.show-list-item__image( :src="show.image.medium" )
         div.show-list-item__content
@@ -15,6 +15,11 @@
 export default {
     props: ['show'],
     computed: {
+        link() {
+            let slug = this.show.url.split("/");
+            slug = slug[slug.length-1];
+            return `/show/${this.show.id}/${slug}`;
+        },
         currentEpisodes() {
             if ( !this.show._embedded || !this.show._embedded.episodes ) {
                 return false;
