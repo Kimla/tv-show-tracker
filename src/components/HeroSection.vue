@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import buttonEl from './Button.vue'
+import buttonEl from './Button.vue';
+import backgroundImage from '@/assets/stranger_things.jpg';
 
 export default {
     name: 'heroSection',
@@ -20,7 +21,7 @@ export default {
     data () {
         return {
             item: {
-                src: 'http://thetvdb.com/banners/fanart/original/305288-19.jpg',
+                src: backgroundImage,
                 link: '/show/2993'
             },
             buttons: {
