@@ -55,13 +55,7 @@ export default {
     },
     computed: {
         isSaved () {
-            let shows = this.$store.state.myShows;
-            for (var i = 0; i < shows.length; i++) {
-                if ( shows[i].id == this.id ) {
-                    return true;
-                }
-            }
-            return false;
+            return this.$store.state.myShows.find(item => item.id == this.id);
         },
         seasons() {
             if ( !this.show ) {
