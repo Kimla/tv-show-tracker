@@ -19,16 +19,6 @@ class AuthController extends Controller
         $this->jwt = $jwt;
     }
 
-    public function register() {
-        /*
-        $user = new User();
-        $user->email = 'kimla89@gmail.com';
-        $user->password = app('hash')->make('12345');
-        $user->name = 'Kim';
-        $user->save();
-        */
-    }
-
     public function postLogin(Request $request)
     {
         $this->validate($request, [
