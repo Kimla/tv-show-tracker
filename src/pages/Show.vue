@@ -97,7 +97,7 @@ export default {
     },
     mounted() {
         const vm = this;
-        axios.get(`http://api.tvmaze.com/shows/${this.id}`, {
+        axios.get(`https://api.tvmaze.com/shows/${this.id}`, {
             params: {
                 embed: 'episodes'
             }

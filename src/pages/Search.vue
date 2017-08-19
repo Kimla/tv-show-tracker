@@ -43,7 +43,7 @@ export default {
             this.zeroResults = false;
             const vm = this;
 
-            axios.get('http://api.tvmaze.com/search/shows', {
+            axios.get('https://api.tvmaze.com/search/shows', {
                 params: {
                     q: vm.keyword
                 }
