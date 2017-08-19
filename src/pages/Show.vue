@@ -1,8 +1,8 @@
 <template lang="pug">
     div.show(v-if="show")
 
-        div.show__image-holder( v-if="show.image" )
-            img.show__image( :src="show.image.medium" )
+        div.show__image-holder( v-if="image" )
+            img.show__image( :src="image" )
 
         h1.show__title {{ show.name }}
         p.show__genres {{ show.genres.join(", ") }}
@@ -54,6 +54,13 @@ export default {
         },
     },
     computed: {
+        image() {
+            if ( !this.show.image ) {
+                return false;
+            }
+
+            return this.show.image.medium.replace(/^http:\/\//i, 'https://');
+        },
         isSaved () {
             return this.$store.state.myShows.find(item => item.id == this.id);
         },

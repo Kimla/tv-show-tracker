@@ -1,7 +1,7 @@
 <template lang="pug">
     router-link.show-list-item(  :to="link" )
-        div.show-list-item__image-holder( v-if="show.image" )
-            img.show-list-item__image( :src="show.image.medium" )
+        div.show-list-item__image-holder( v-if="image" )
+            img.show-list-item__image( :src="image" )
         div.show-list-item__content
             div.show-list-item__content-inner
                 h2.show-list-item__title {{ show.name }}
@@ -19,6 +19,13 @@ export default {
             let slug = this.show.url.split("/");
             slug = slug[slug.length-1];
             return `/show/${this.show.id}/${slug}`;
+        },
+        image() {
+            if ( !this.show.image ) {
+                return false;
+            }
+
+            return this.show.image.medium.replace(/^http:\/\//i, 'https://');
         },
         currentEpisodes() {
             if ( !this.show._embedded || !this.show._embedded.episodes ) {
