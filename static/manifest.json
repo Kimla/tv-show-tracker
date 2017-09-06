@@ -1,6 +1,6 @@
 {
-  "name": "tv-show-tracker",
-  "short_name": "tv-show-tracker",
+  "name": "Tv show tracker",
+  "short_name": "Tv shows",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#4DBA87"
