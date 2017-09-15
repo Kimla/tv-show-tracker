@@ -10,7 +10,7 @@
             label.label( for="password" ) Password
             input.input( type="password" id="password" name="password" v-model="password" )
 
-        div.login__bottom
+        div.form__bottom
             div.register-link-holder
                 router-link.register-link( to="/register" ) Don't have an account?
 
