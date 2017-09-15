@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
                 console.log(response);
                 if ( response.status === 200 ) {
                     localStorage.setItem("token", response.data.token);
-                    router.replace("/");
+                    commit('login');
                 }
             })
             .catch(function (error) {
@@ -59,6 +59,15 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        login: (state) => {
+            state.isLoggedIn = true;
+            router.replace("/");
+        },
+        logout: (state) => {
+            localStorage.removeItem('token');
+            state.isLoggedIn = false;
+            router.replace("/");
+        },
         SET_MY_SHOWS: (state, { myShows }) => {
             state.myShows = myShows;
         },
