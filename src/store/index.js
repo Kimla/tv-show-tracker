@@ -1,13 +1,31 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
+import router from '../router'
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        myShows: []
+        myShows: [],
+        isLoggedIn: !!localStorage.getItem("token"),
     },
     actions: {
+        login({ commit }, payload) {
+            axios.post('http://localhost:8000/login', {
+                ...payload
+            })
+            .then(function (response) {
+                console.log(response);
+                if ( response.status === 200 ) {
+                    localStorage.setItem("token", response.data.token);
+                    router.replace("/");
+                }
+            })
+            .catch(function (error) {
+                console.log(error.response);
+            });
+        },
         LOAD_MY_SHOWS({ commit }) {
             let myShows = localStorage.getItem("myShows");
             if ( myShows ) {
@@ -46,9 +64,14 @@ export const store = new Vuex.Store({
         },
         ADD_TO_MY_SHOWS: (state, { show }) => {
             state.myShows.push(show);
+        },
+        setToken: (state, payload) => {
+            this.token = payload;
         }
     },
     getters: {
-
+        isLoggedIn(state) {
+            return state.isLoggedIn;
+        }
     }
 });

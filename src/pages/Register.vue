@@ -43,6 +43,11 @@ export default {
         register() {
             console.log("register");
         }
+    },
+    created() {
+        if ( this.$store.getters.isLoggedIn ) {
+            this.$router.replace("/");
+        }
     }
 }
 </script>

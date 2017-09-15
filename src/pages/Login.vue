@@ -34,11 +34,19 @@ export default {
     },
     methods: {
         login() {
+            const email = this.email;
+            const password = this.password;
             if ( this.email.length < 1 || this.password.length < 1 ) {
                 // TODO: Add error message
                 return false;
             }
-            console.log("login");
+
+            this.$store.dispatch('login', {email, password});
+        }
+    },
+    created() {
+        if ( this.$store.getters.isLoggedIn ) {
+            this.$router.replace("/");
         }
     }
 }

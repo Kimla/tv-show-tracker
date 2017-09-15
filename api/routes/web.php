@@ -11,6 +11,15 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    $results = app('db')->select("SELECT * FROM users");
+    return $results;
 });
+
+$router->post('/login', 'AuthController@loginPost');
+
+$router->get('/test', ['middleware' => 'auth', function () use ($router) {
+    return 'test';
+}]);
