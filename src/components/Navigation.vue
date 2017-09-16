@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import homeIcon from '../assets/home.svg'
-import searchIcon from '../assets/search.svg'
-import myShowsIcon from '../assets/star_filled.svg'
-import settingsIcon from '../assets/settings.svg'
+import homeIcon from '@/assets/home.svg'
+import searchIcon from '@/assets/search.svg'
+import myShowsIcon from '@/assets/star_filled.svg'
+import settingsIcon from '@/assets/settings.svg'
 
 export default {
     name: 'navigation',
