@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
     return $results;
 });
 
-$router->post('/login', 'AuthController@loginPost');
+$router->post('/login', 'AuthController@login');
 
 $router->get('/test', ['middleware' => 'auth', function () use ($router) {
     return 'test';
