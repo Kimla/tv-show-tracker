@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import router from '../router'
+import * as notice from './modules/notice';
 
 Vue.use(Vuex);
 
@@ -97,5 +98,8 @@ export const store = new Vuex.Store({
         isLoggedIn(state) {
             return state.isLoggedIn;
         }
+    },
+    modules: {
+        notice,
     }
 });
