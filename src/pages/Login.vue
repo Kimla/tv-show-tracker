@@ -20,7 +20,7 @@
 
 <script>
 import axios from 'axios';
-import buttonEl from '@/components/Button.vue';
+import buttonEl from '@/components/Button';
 
 export default {
     name: 'login',

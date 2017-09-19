@@ -15,8 +15,8 @@
 
 <script>
 import axios from 'axios';
-import showList from '@/components/ShowList.vue';
-import loader from '@/components/Loader.vue';
+import showList from '@/components/ShowList';
+import loader from '@/components/Loader';
 
 export default {
     name: 'search',

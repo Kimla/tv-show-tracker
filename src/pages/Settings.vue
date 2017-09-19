@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import buttonEl from '@/components/Button.vue';
+import buttonEl from '@/components/Button';
 
 export default {
     name: 'settings',

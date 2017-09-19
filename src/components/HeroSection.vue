@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import buttonEl from './Button.vue';
+import buttonEl from './Button';
 import backgroundImage from '@/assets/stranger_things.jpg';
 
 export default {
