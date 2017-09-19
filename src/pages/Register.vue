@@ -94,7 +94,7 @@ export default {
             this.$store.dispatch('showNotice', notice);
         }
     },
-    created() {
+    beforeCreate() {
         if ( this.$store.getters.isLoggedIn ) {
             this.$router.replace("/");
         }
