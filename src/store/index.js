@@ -27,21 +27,6 @@ export const store = new Vuex.Store({
                 console.log(error.response);
             });
         },
-        login({ commit }, payload) {
-            axios.post('http://localhost:8000/login', {
-                ...payload
-            })
-            .then(function (response) {
-                console.log(response);
-                if ( response.status === 200 ) {
-                    localStorage.setItem("token", response.data.token);
-                    commit('login');
-                }
-            })
-            .catch(function (error) {
-                console.log(error.response);
-            });
-        },
         LOAD_MY_SHOWS({ commit }) {
             let myShows = localStorage.getItem("myShows");
             if ( myShows ) {

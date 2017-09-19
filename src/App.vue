@@ -4,15 +4,18 @@
         div.page
             transition(name="transform" mode="out-in")
                 router-view
+        notice
 </template>
 
 <script>
-import navigation from './components/Navigation.vue'
+import navigation from './components/Navigation';
+import notice from './components/Notice'
 
 export default {
     name: 'app',
     components: {
         navigation,
+        notice
     },
     created() {
         this.$store.dispatch('LOAD_MY_SHOWS');

@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import buttonEl from '@/components/Button.vue'
+import axios from 'axios';
+import buttonEl from '@/components/Button.vue';
 
 export default {
     name: 'login',
@@ -36,12 +37,41 @@ export default {
         login() {
             const email = this.email;
             const password = this.password;
-            if ( this.email.length < 1 || this.password.length < 1 ) {
-                // TODO: Add error message
-                return false;
-            }
+            const _this = this;
 
-            this.$store.dispatch('login', {email, password});
+            axios.post('http://localhost:8000/login', {
+                email,
+                password
+            })
+            .then(function (response) {
+                if ( response.status === 200 ) {
+                    localStorage.setItem("token", response.data.token);
+                    _this.$store.commit('login');
+                    _this.showSuccessNotice();
+                } else {
+                    this.showErrorNotice();
+                }
+            })
+            .catch(function (error) {
+                console.log(error.response);
+                _this.showErrorNotice();
+            });
+        },
+        showSuccessNotice() {
+            let notice = {
+                message: 'You are now logged in!',
+                status: 'is-success',
+            };
+
+            this.$store.dispatch('showNotice', notice);
+        },
+        showErrorNotice() {
+            let notice = {
+                message: 'You have entered an invalid username or password!',
+                status: 'is-error',
+            };
+
+            this.$store.dispatch('showNotice', notice);
         }
     },
     created() {
