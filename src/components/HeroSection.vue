@@ -18,13 +18,30 @@ export default {
     components: {
         buttonEl,
     },
-    data () {
+    data() {
         return {
             item: {
                 src: backgroundImage,
                 link: '/show/2993'
             },
-            buttons: {
+        }
+    },
+    computed: {
+        buttons() {
+            if ( this.$store.getters.isLoggedIn ) {
+                return {
+                    register: {
+                        label: 'Search',
+                        link: '/search',
+                    },
+                    login: {
+                        label: 'My shows',
+                        link: '/my-shows',
+                    }
+                }
+            }
+
+            return {
                 register: {
                     label: 'Register',
                     link: '/register',
