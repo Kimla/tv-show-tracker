@@ -12,21 +12,6 @@ export const store = new Vuex.Store({
         isLoggedIn: !!localStorage.getItem("token"),
     },
     actions: {
-        register({ commit }, payload) {
-            axios.post('http://localhost:8000/register', {
-                ...payload
-            })
-            .then(function (response) {
-                console.log(response);
-                if ( response.status === 200 && response.data.success ) {
-                    localStorage.setItem("token", response.data.token);
-                    commit('login');
-                }
-            })
-            .catch(function (error) {
-                console.log(error.response);
-            });
-        },
         LOAD_MY_SHOWS({ commit }) {
             let myShows = localStorage.getItem("myShows");
             if ( myShows ) {
