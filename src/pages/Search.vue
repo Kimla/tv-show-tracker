@@ -3,10 +3,7 @@
         div.search-bar
             input.search-bar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
             div.search-bar__icon( @click="searchHandler()" )
-                <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                </svg>
+                img( :src="searchIcon" )
         showList( v-if="showsData.length > 0" :shows="shows" )
         loader( v-if="isLoading" )
         div.message( v-if="zeroResults" )
@@ -17,6 +14,7 @@
 import axios from 'axios';
 import showList from '@/components/ShowList';
 import loader from '@/components/Loader';
+import searchIcon from '@/assets/search_white.svg'
 
 export default {
     name: 'search',
@@ -29,7 +27,8 @@ export default {
             showsData: [],
             keyword: "",
             zeroResults: false,
-            isLoading: false
+            isLoading: false,
+            searchIcon
         }
     },
     computed: {
@@ -98,7 +97,7 @@ export default {
             top: 0;
             background-color: #2196F3;
             padding: 12px;
-            svg {
+            img {
                 width: 24px;
                 height: 24px;
             }
