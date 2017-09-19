@@ -15,6 +15,17 @@ export default {
     methods: {
         logout() {
             this.$store.commit('logout');
+            let notice = {
+                message: 'You are now logged out!',
+                status: 'is-success',
+            };
+
+            this.$store.dispatch('showNotice', notice);
+        }
+    },
+    beforeCreate() {
+        if ( !this.$store.getters.isLoggedIn ) {
+            this.$router.replace("/login");
         }
     }
 }

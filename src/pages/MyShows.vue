@@ -34,6 +34,11 @@ export default {
             return myShows;
         }
     },
+    beforeCreate() {
+        if ( !this.$store.getters.isLoggedIn ) {
+            this.$router.replace("/login");
+        }
+    }
 }
 </script>
 
