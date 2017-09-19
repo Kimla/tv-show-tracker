@@ -59,15 +59,23 @@ export default {
                 password
             })
             .then(function (response) {
-                console.log(response);
                 if ( response.status === 200 && response.data.success ) {
                     localStorage.setItem("token", response.data.token);
                     _this.$store.commit('login');
+                    _this.showSuccessNotice();
                 }
             })
             .catch(function (error) {
                 _this.handleError(error.response.data);
             });
+        },
+        showSuccessNotice() {
+            let notice = {
+                message: 'You are now logged in!',
+                status: 'is-success',
+            };
+
+            this.$store.dispatch('showNotice', notice);
         },
         handleError(error) {
             let errorMessage = '';
