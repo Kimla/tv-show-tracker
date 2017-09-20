@@ -12,7 +12,7 @@
 
         div.form__bottom
             div.register-link-holder
-                router-link.register-link( to="/register" ) Don't have an account?
+                router-link.form-link( to="/register" ) Don't have an account?
 
             div.button-holder
                 buttonEl( :button="{ label: 'Login' }" @Clicked="login()" )
@@ -83,14 +83,5 @@ export default {
 </script>
 
 <style lang="scss">
-    .login {
-        &__bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-    }
-    .register-link {
-        font-size: 15px;
-    }
+
 </style>

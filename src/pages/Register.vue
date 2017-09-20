@@ -13,9 +13,9 @@
             label.label( for="password-confirm" ) Confirm Password
             input.input( type="password" id="password-confirm" name="password-confirm" v-model="password2" )
 
-        div.register__bottom
+        div.form__bottom
             div.login-link-holder
-                router-link.login-link( to="/login" ) Already have an account?
+                router-link.form-link( to="/login" ) Already have an account?
 
             div.button-holder
                 buttonEl( :button="{ label: 'Register' }" @Clicked="register()" )
@@ -103,14 +103,5 @@ export default {
 </script>
 
 <style lang="scss">
-    .register {
-        &__bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    }
-    .login-link {
-        font-size: 15px;
-    }
+
 </style>

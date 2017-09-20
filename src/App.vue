@@ -108,6 +108,14 @@ export default {
         .button-holder {
             text-align: right;
         }
+        &__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-link {
+            font-size: 15px;
+        }
     }
 
     .transform-enter {
