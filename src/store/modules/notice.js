@@ -20,12 +20,12 @@ export const mutations = {
 
 export const actions = {
     showNotice: ({ commit }, payload) => {
-         commit('showNotice', payload);
+        commit('showNotice', payload);
 
-         clearTimeout(state.noticeTimeout);
+        clearTimeout(state.noticeTimeout);
 
-         state.noticeTimeout = setTimeout(function () {
-             commit('hideNotice');
-         }, 4000);
+        state.noticeTimeout = setTimeout(function () {
+            commit('hideNotice');
+        }, 4000);
     },
 };

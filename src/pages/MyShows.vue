@@ -21,11 +21,11 @@ export default {
     },
     computed: {
         myShows () {
-            if ( this.$store.state.myShows.length < 1 ) {
+            let myShows = this.$store.getters.myShows;
+
+            if ( myShows < 1 ) {
                 return false;
             }
-
-            let myShows = this.$store.state.myShows;
 
             myShows.sort(function (a, b) {
                return a.name.localeCompare(b.name);

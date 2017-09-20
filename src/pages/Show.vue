@@ -1,5 +1,5 @@
 <template lang="pug">
-    div.show(v-if="show")
+    div.show( v-if="show" )
 
         div.show__image-holder( v-if="image" )
             img.show__image( :src="image" )
@@ -24,7 +24,7 @@
 
 <script>
 import axios from 'axios';
-import showSeason from '@/components/ShowSeason.vue';
+import showSeason from '@/components/ShowSeason';
 import starFilledIcon from '@/assets/star_filled.svg'
 import starIcon from '@/assets/star_border.svg'
 
@@ -59,7 +59,7 @@ export default {
             return this.show.image.medium.replace(/^http:\/\//i, 'https://');
         },
         isSaved () {
-            return this.$store.state.myShows.find(item => item.id == this.id);
+            return this.$store.getters.myShows.find(item => item.id == this.id);
         },
         seasons() {
             if ( !this.show ) {
