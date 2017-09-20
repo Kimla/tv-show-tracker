@@ -24,3 +24,5 @@ $router->post('/register', 'UserController@register');
 $router->get('/test', ['middleware' => 'auth', function () use ($router) {
     return 'test';
 }]);
+
+$router->get('/userShows', 'UserController@shows');

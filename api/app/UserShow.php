@@ -11,7 +11,7 @@ class UserShow extends Model
      *
      * @var string
      */
-    protected $table = 'user_shows';
+    protected $table = 'user_show';
 
     public function show()
     {
