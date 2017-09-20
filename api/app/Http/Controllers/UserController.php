@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\JWTAuth;
 
 class UserController extends Controller
@@ -22,12 +23,9 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        $hasher = app()->make('hash');
-        $email = $request->input('email');
-        $password = $hasher->make($request->input('password'));
         $user = User::create([
-            'email' => $email,
-            'password' => $password,
+            'email' => $request->input('email'),
+            'password' => $request->input('password')
         ]);
 
         $res['success'] = true;
