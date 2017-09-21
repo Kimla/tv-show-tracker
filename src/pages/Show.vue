@@ -44,10 +44,10 @@ export default {
     },
     methods: {
         saveShow() {
-            this.$store.dispatch('ADD_TO_MY_SHOWS', { show: this.show })
+            this.$store.dispatch('addToMyShows', { show: this.show })
         },
         deleteShow() {
-            this.$store.dispatch('REMOVE_FROM_MY_SHOWS', { show: this.show })
+            this.$store.dispatch('removeFromMyShows', { show: this.show })
         },
     },
     computed: {

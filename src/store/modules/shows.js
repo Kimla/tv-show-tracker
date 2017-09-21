@@ -12,13 +12,13 @@ export const getters = {
 };
 
 export const mutations = {
-    SET_MY_SHOWS: (state, { myShows }) => {
+    setMyShows: (state, { myShows }) => {
         state.myShows = myShows;
     },
-    ADD_TO_MY_SHOWS: (state, { show }) => {
+    addToMyShows: (state, { show }) => {
         state.myShows.push(show);
     },
-    REMOVE_FROM_MY_SHOWS: (state, {show}) => {
+    removeFromMyShows: (state, {show}) => {
         let shows = state.myShows;
         let newShows = []
 
@@ -33,17 +33,17 @@ export const mutations = {
 };
 
 export const actions = {
-    LOAD_MY_SHOWS({ commit }) {
+    loadMyShows({ commit }) {
         axios.get('http://localhost:8000/userShows')
         .then(function (response) {
             console.log(response);
-            commit('SET_MY_SHOWS', { myShows: response.data })
+            commit('setMyShows', { myShows: response.data })
         })
         .catch(function (error) {
             console.log(error);
         });
     },
-    ADD_TO_MY_SHOWS({ commit, state }, { show }) {
+    addToMyShows({ commit, state }, { show }) {
         const data = getShowData(show);
 
         axios.post('http://localhost:8000/userShows', {
@@ -51,17 +51,17 @@ export const actions = {
         })
         .then(function (response) {
             console.log(response);
-            commit('ADD_TO_MY_SHOWS', { show: data })
+            commit('addToMyShows', { show: data })
         })
         .catch(function (error) {
             console.log(error.response);
         });
     },
-    REMOVE_FROM_MY_SHOWS({ commit, state }, { show }) {
+    removeFromMyShows({ commit, state }, { show }) {
         axios.delete('http://localhost:8000/userShows?tvmaze_id='+show.id)
         .then(function (response) {
             console.log(response);
-            commit('REMOVE_FROM_MY_SHOWS', { show: show })
+            commit('removeFromMyShows', { show: show })
         })
         .catch(function (error) {
             console.log(error.response);

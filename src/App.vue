@@ -18,7 +18,7 @@ export default {
         notice
     },
     created() {
-        this.$store.dispatch('LOAD_MY_SHOWS');
+        this.$store.dispatch('loadMyShows');
     }
 }
 </script>
