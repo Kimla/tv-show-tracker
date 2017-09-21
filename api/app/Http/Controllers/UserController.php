@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\UserShow;
 use App\Show;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\JWTAuth;
@@ -49,6 +50,33 @@ class UserController extends Controller
         }
 
         return $shows;
+    }
+
+    public function addShow(Request $request) {
+        $show = Show::where('tvmaze_id', $request->input('tvmaze_id'))->first();
+
+        if ( !$show ) {
+            $show = Show::create([
+                'title' => $request->input('title'),
+                'image' => $request->input('image'),
+                'genres' => $request->input('genres'),
+                'tvmaze_id' => $request->input('tvmaze_id'),
+            ]);
+        }
+
+        $userShow = UserShow::where([
+            ['show_id', $show['id']],
+            ['user_id', 1]
+        ])->first();
+
+        if ( !$userShow ) {
+            $userShow = UserShow::create([
+                'show_id' => $show['id'],
+                'user_id' => 1,
+            ]);
+        }
+
+        return $userShow;
     }
 
 }

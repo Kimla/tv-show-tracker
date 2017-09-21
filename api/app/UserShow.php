@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserShow extends Model
 {
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'user_show';
+
+    protected $fillable = [
+        'user_id', 'show_id',
+    ];
 
     public function show()
     {

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const state = {
     myShows: [],
 };
@@ -26,6 +28,35 @@ export const actions = {
         }
     },
     ADD_TO_MY_SHOWS({ commit, state }, { show }) {
+        console.log(show);
+
+        let image = false;
+
+        if ( show.image ) {
+            image = show.image.medium.replace(/^http:\/\//i, 'https://');
+        }
+
+        const data = {
+            'title': show.name,
+            'image': image,
+            'genres': show.genres.join(", "),
+            'tvmaze_id': show.id,
+        }
+
+        axios.post('http://localhost:8000/userShows', {
+            ...data
+        })
+        .then(function (response) {
+            console.log(response);
+            commit('ADD_TO_MY_SHOWS', { show: data })
+        })
+        .catch(function (error) {
+            console.log(error.response);
+        });
+
+        console.log(data);
+
+        /*
         let myShows = localStorage.getItem("myShows");
         if ( !myShows ) {
             myShows = [];
@@ -34,7 +65,8 @@ export const actions = {
         }
         myShows.push(show);
         localStorage.setItem("myShows", JSON.stringify(myShows));
-        commit('ADD_TO_MY_SHOWS', { show: show })
+
+        */
     },
     REMOVE_FROM_MY_SHOWS({ commit, state }, { show }) {
         let myShows = localStorage.getItem("myShows");

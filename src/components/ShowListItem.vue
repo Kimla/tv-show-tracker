@@ -1,11 +1,11 @@
 <template lang="pug">
     router-link.show-list-item(  :to="link" )
-        div.show-list-item__image-holder( v-if="image" )
-            img.show-list-item__image( :src="image" )
+        div.show-list-item__image-holder( v-if="show.image" )
+            img.show-list-item__image( :src="show.image" )
         div.show-list-item__content
             div.show-list-item__content-inner
                 h2.show-list-item__title {{ show.name }}
-                p.show-list-item__genres {{ show.genres.join(", ") }}
+                p.show-list-item__genres {{ show.genres }}
                 div.show-list-item__episodes( v-if="currentEpisodes" )
                     p <strong>Latest ep:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - ({{ currentEpisodes.latest.airdate }})
                     p( v-if="currentEpisodes.next" ) <strong>Next ep:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - ({{ currentEpisodes.next.airdate }})
@@ -16,18 +16,11 @@ export default {
     props: ['show'],
     computed: {
         link() {
-            let slug = this.show.url.split("/");
-            slug = slug[slug.length-1];
-            return `/show/${this.show.id}/${slug}`;
-        },
-        image() {
-            if ( !this.show.image ) {
-                return false;
-            }
-
-            return this.show.image.medium.replace(/^http:\/\//i, 'https://');
+            return `/show/${this.show.id}/${this.show.slug}`;
         },
         currentEpisodes() {
+            return false;
+
             if ( !this.show._embedded || !this.show._embedded.episodes ) {
                 return false;
             }

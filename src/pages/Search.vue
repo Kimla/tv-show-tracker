@@ -14,7 +14,8 @@
 import axios from 'axios';
 import showList from '@/components/ShowList';
 import loader from '@/components/Loader';
-import searchIcon from '@/assets/search_white.svg'
+import searchIcon from '@/assets/search_white.svg';
+import {slugify, getShowData} from '@/helpers/helpers';
 
 export default {
     name: 'search',
@@ -33,7 +34,15 @@ export default {
     },
     computed: {
         shows() {
-            return this.showsData.map(item => item.show);
+            let showsOrg = this.showsData.map(item => item.show);
+            let shows = [];
+
+            for (let i = 0; i < showsOrg.length; i++) {
+                const show = getShowData(showsOrg[i]);
+                shows.push(show);
+            }
+
+            return shows;
         }
     },
     methods: {
