@@ -28,7 +28,7 @@ export default {
             }
 
             myShows.sort(function (a, b) {
-               return a.name.localeCompare(b.name);
+               return a.title.localeCompare(b.title);
             });
 
             return myShows;
