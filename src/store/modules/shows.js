@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {slugify, getShowData} from '@/helpers/helpers';
 
 export const state = {
     myShows: [],
@@ -28,20 +29,7 @@ export const actions = {
         }
     },
     ADD_TO_MY_SHOWS({ commit, state }, { show }) {
-        console.log(show);
-
-        let image = false;
-
-        if ( show.image ) {
-            image = show.image.medium.replace(/^http:\/\//i, 'https://');
-        }
-
-        const data = {
-            'title': show.name,
-            'image': image,
-            'genres': show.genres.join(", "),
-            'tvmaze_id': show.id,
-        }
+        const data = getShowData(show);
 
         axios.post('http://localhost:8000/userShows', {
             ...data
@@ -53,20 +41,6 @@ export const actions = {
         .catch(function (error) {
             console.log(error.response);
         });
-
-        console.log(data);
-
-        /*
-        let myShows = localStorage.getItem("myShows");
-        if ( !myShows ) {
-            myShows = [];
-        } else {
-            myShows = JSON.parse(myShows);
-        }
-        myShows.push(show);
-        localStorage.setItem("myShows", JSON.stringify(myShows));
-
-        */
     },
     REMOVE_FROM_MY_SHOWS({ commit, state }, { show }) {
         let myShows = localStorage.getItem("myShows");

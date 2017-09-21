@@ -4,7 +4,7 @@
             img.show-list-item__image( :src="show.image" )
         div.show-list-item__content
             div.show-list-item__content-inner
-                h2.show-list-item__title {{ show.name }}
+                h2.show-list-item__title {{ show.title }}
                 p.show-list-item__genres {{ show.genres }}
                 div.show-list-item__episodes( v-if="currentEpisodes" )
                     p <strong>Latest ep:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - ({{ currentEpisodes.latest.airdate }})
@@ -16,7 +16,7 @@ export default {
     props: ['show'],
     computed: {
         link() {
-            return `/show/${this.show.id}/${this.show.slug}`;
+            return `/show/${this.show.tvmaze_id}/${this.show.slug}`;
         },
         currentEpisodes() {
             return false;
