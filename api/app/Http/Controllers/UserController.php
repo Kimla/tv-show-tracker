@@ -53,7 +53,7 @@ class UserController extends Controller
         return $shows;
     }
 
-    public function addShow(Request $request) {
+    public function addUserShow(Request $request) {
         $show = Show::where('tvmaze_id', $request->input('tvmaze_id'))->first();
 
         if ( !$show ) {
