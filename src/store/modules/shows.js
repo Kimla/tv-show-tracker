@@ -18,6 +18,18 @@ export const mutations = {
     ADD_TO_MY_SHOWS: (state, { show }) => {
         state.myShows.push(show);
     },
+    REMOVE_FROM_MY_SHOWS: (state, {show}) => {
+        let shows = state.myShows;
+        let newShows = []
+
+        for (var i = 0; i < shows.length; i++) {
+            if ( shows[i].tvmaze_id != show.id ) {
+                newShows.push(shows[i]);
+            }
+        }
+
+        state.myShows = newShows;
+    },
 };
 
 export const actions = {
@@ -46,16 +58,13 @@ export const actions = {
         });
     },
     REMOVE_FROM_MY_SHOWS({ commit, state }, { show }) {
-        let myShows = localStorage.getItem("myShows");
-        myShows = JSON.parse(myShows);
-        let myShowsNew = [];
-        for (var i = 0; i < myShows.length; i++) {
-            if ( myShows[i].id != show.id ) {
-                myShowsNew.push(myShows[i]);
-            }
-        }
-
-        localStorage.setItem("myShows", JSON.stringify(myShowsNew));
-        commit('SET_MY_SHOWS', { myShows: myShowsNew })
+        axios.delete('http://localhost:8000/userShows?tvmaze_id='+show.id)
+        .then(function (response) {
+            console.log(response);
+            commit('REMOVE_FROM_MY_SHOWS', { show: show })
+        })
+        .catch(function (error) {
+            console.log(error.response);
+        });
     },
 };

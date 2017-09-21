@@ -27,3 +27,4 @@ $router->get('/test', ['middleware' => 'auth', function () use ($router) {
 
 $router->get('/userShows', 'UserController@shows');
 $router->post('/userShows', 'UserController@addShow');
+$router->delete('/userShows', 'UserController@removeUserShow');

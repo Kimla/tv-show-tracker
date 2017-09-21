@@ -80,4 +80,16 @@ class UserController extends Controller
         return $userShow;
     }
 
+    public function removeUserShow(Request $request) {
+        $tvmazeId = $request->query('tvmaze_id');
+
+        $show = Show::where('tvmaze_id', $tvmazeId)->first();
+
+        $result = UserShow::where([
+            ['show_id', $show['id']],
+            ['user_id', 1]
+        ])->forceDelete();
+
+        return $result;
+    }
 }
