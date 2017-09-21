@@ -59,7 +59,7 @@ export default {
             return this.show.image.medium.replace(/^http:\/\//i, 'https://');
         },
         isSaved () {
-            return this.$store.getters.myShows.find(item => item.id == this.id);
+            return this.$store.getters.myShows.find(item => item.tvmaze_id == this.id);
         },
         seasons() {
             if ( !this.show ) {

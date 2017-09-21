@@ -39,6 +39,7 @@ class UserController extends Controller
 
     public function shows(Request $request) {
         $userId = $request->query('user_id');
+        $userId = 1;
         $user = User::find($userId);
 
         $userShows = $user->userShows()->get();

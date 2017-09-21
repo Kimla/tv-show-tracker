@@ -15,7 +15,7 @@ import axios from 'axios';
 import showList from '@/components/ShowList';
 import loader from '@/components/Loader';
 import searchIcon from '@/assets/search_white.svg';
-import {slugify, getShowData} from '@/helpers/helpers';
+import {getShowData} from '@/helpers/helpers';
 
 export default {
     name: 'search',

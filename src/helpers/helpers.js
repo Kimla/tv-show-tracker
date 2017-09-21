@@ -19,6 +19,5 @@ export function getShowData(show) {
         'image': image,
         'genres': show.genres.join(", "),
         'tvmaze_id': show.id,
-        'slug': slugify(show.name),
     }
 }

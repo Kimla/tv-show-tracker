@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {slugify, getShowData} from '@/helpers/helpers';
+import {getShowData} from '@/helpers/helpers';
 
 export const state = {
     myShows: [],
@@ -22,11 +22,14 @@ export const mutations = {
 
 export const actions = {
     LOAD_MY_SHOWS({ commit }) {
-        let myShows = localStorage.getItem("myShows");
-        if ( myShows ) {
-            myShows = JSON.parse(myShows);
-            commit('SET_MY_SHOWS', { myShows: myShows })
-        }
+        axios.get('http://localhost:8000/userShows')
+        .then(function (response) {
+            console.log(response);
+            commit('SET_MY_SHOWS', { myShows: response.data })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     },
     ADD_TO_MY_SHOWS({ commit, state }, { show }) {
         const data = getShowData(show);

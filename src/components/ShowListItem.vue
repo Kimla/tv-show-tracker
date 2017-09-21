@@ -12,11 +12,14 @@
 </template>
 
 <script>
+import {slugify} from '@/helpers/helpers';
+
 export default {
     props: ['show'],
     computed: {
         link() {
-            return `/show/${this.show.tvmaze_id}/${this.show.slug}`;
+            const slug = slugify(this.show.title);
+            return `/show/${this.show.tvmaze_id}/${slug}`;
         },
         currentEpisodes() {
             return false;
