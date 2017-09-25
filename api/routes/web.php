@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 $router->post('/login', 'AuthController@login');
 $router->post('/register', 'UserController@register');
 
+$router->get('/popularShows', 'ShowController@popularShows');
+
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/userShows', 'UserController@shows');
     $router->post('/userShows', 'UserController@addUserShow');

@@ -3,12 +3,16 @@ import {getShowData, getAuthHeader} from '@/helpers/helpers';
 
 export const state = {
     myShows: [],
+    popularShows: [],
 };
 
 export const getters = {
     myShows(state) {
         return state.myShows;
     },
+    popularShows(state) {
+        return state.popularShows;
+    }
 };
 
 export const mutations = {
@@ -30,16 +34,34 @@ export const mutations = {
 
         state.myShows = newShows;
     },
+    setPopularShows: (state, { shows }) => {
+        state.popularShows = shows;
+    },
 };
 
 export const actions = {
+    loadPopularShows({ commit }) {
+        const api = axios.create({
+            baseURL: 'http://localhost:8000/',
+            headers: getAuthHeader()
+        });
+
+        api.get('popularShows')
+        .then(function (response) {
+            console.log(response);
+            commit('setPopularShows', { shows: response.data })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    },
     loadMyShows({ commit }) {
         const api = axios.create({
             baseURL: 'http://localhost:8000/',
             headers: getAuthHeader()
         });
 
-        api.get('http://localhost:8000/userShows')
+        api.get('userShows')
         .then(function (response) {
             console.log(response);
             commit('setMyShows', { myShows: response.data })
