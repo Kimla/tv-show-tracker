@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getShowData} from '@/helpers/helpers';
+import {getShowData, getAuthHeader} from '@/helpers/helpers';
 
 export const state = {
     myShows: [],
@@ -34,7 +34,12 @@ export const mutations = {
 
 export const actions = {
     loadMyShows({ commit }) {
-        axios.get('http://localhost:8000/userShows')
+        const api = axios.create({
+            baseURL: 'http://localhost:8000/',
+            headers: getAuthHeader()
+        });
+
+        api.get('http://localhost:8000/userShows')
         .then(function (response) {
             console.log(response);
             commit('setMyShows', { myShows: response.data })
@@ -46,7 +51,12 @@ export const actions = {
     addToMyShows({ commit, state }, { show }) {
         const data = getShowData(show);
 
-        axios.post('http://localhost:8000/userShows', {
+        const api = axios.create({
+            baseURL: 'http://localhost:8000/',
+            headers: getAuthHeader()
+        });
+
+        api.post('userShows', {
             ...data
         })
         .then(function (response) {
@@ -58,7 +68,12 @@ export const actions = {
         });
     },
     removeFromMyShows({ commit, state }, { show }) {
-        axios.delete('http://localhost:8000/userShows?tvmaze_id='+show.id)
+        const api = axios.create({
+            baseURL: 'http://localhost:8000/',
+            headers: getAuthHeader()
+        });
+
+        api.delete('http://localhost:8000/userShows?tvmaze_id='+show.id)
         .then(function (response) {
             console.log(response);
             commit('removeFromMyShows', { show: show })

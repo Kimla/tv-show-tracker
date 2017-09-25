@@ -13,18 +13,11 @@
 
 use Illuminate\Http\Request;
 
-$router->get('/', function () use ($router) {
-    $results = app('db')->select("SELECT * FROM users");
-    return $results;
-});
-
 $router->post('/login', 'AuthController@login');
 $router->post('/register', 'UserController@register');
 
-$router->get('/test', ['middleware' => 'auth', function () use ($router) {
-    return 'test';
-}]);
-
-$router->get('/userShows', 'UserController@shows');
-$router->post('/userShows', 'UserController@addUserShow');
-$router->delete('/userShows', 'UserController@removeUserShow');
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->get('/userShows', 'UserController@shows');
+    $router->post('/userShows', 'UserController@addUserShow');
+    $router->delete('/userShows', 'UserController@removeUserShow');
+});

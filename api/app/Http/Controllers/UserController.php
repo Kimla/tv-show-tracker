@@ -38,9 +38,7 @@ class UserController extends Controller
     }
 
     public function shows(Request $request) {
-        $userId = $request->query('user_id');
-        $userId = 1;
-        $user = User::find($userId);
+        $user = $this->jwt->user();
 
         $userShows = $user->userShows()->get();
 
@@ -55,6 +53,7 @@ class UserController extends Controller
 
     public function addUserShow(Request $request) {
         $show = Show::where('tvmaze_id', $request->input('tvmaze_id'))->first();
+        $user = $this->jwt->user();
 
         if ( !$show ) {
             $show = Show::create([
@@ -67,13 +66,13 @@ class UserController extends Controller
 
         $userShow = UserShow::where([
             ['show_id', $show['id']],
-            ['user_id', 1]
+            ['user_id', $user['id']]
         ])->first();
 
         if ( !$userShow ) {
             $userShow = UserShow::create([
                 'show_id' => $show['id'],
-                'user_id' => 1,
+                'user_id' => $user['id'],
             ]);
         }
 
@@ -82,12 +81,13 @@ class UserController extends Controller
 
     public function removeUserShow(Request $request) {
         $tvmazeId = $request->query('tvmaze_id');
+        $user = $this->jwt->user();
 
         $show = Show::where('tvmaze_id', $tvmazeId)->first();
 
         $result = UserShow::where([
             ['show_id', $show['id']],
-            ['user_id', 1]
+            ['user_id', $user['id']]
         ])->forceDelete();
 
         return $result;

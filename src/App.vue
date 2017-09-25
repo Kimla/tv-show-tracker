@@ -9,7 +9,7 @@
 
 <script>
 import navigation from './components/Navigation';
-import notice from './components/Notice'
+import notice from './components/Notice';
 
 export default {
     name: 'app',
@@ -18,7 +18,10 @@ export default {
         notice
     },
     created() {
-        this.$store.dispatch('loadMyShows');
+        const token = localStorage.getItem("token");
+        if ( token ) {
+            this.$store.dispatch('loadMyShows');
+        }
     }
 }
 </script>
