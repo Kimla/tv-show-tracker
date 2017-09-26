@@ -39,7 +39,7 @@ export default {
             const password = this.password;
             const _this = this;
 
-            axios.post('http://localhost:8000/login', {
+            axios.post(apiUrl+'login', {
                 email,
                 password
             })

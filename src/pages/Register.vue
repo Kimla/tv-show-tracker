@@ -54,7 +54,7 @@ export default {
                 return false;
             }
 
-            axios.post('http://localhost:8000/register', {
+            axios.post(apiUrl+'register', {
                 email,
                 password
             })

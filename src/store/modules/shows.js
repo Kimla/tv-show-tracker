@@ -42,7 +42,7 @@ export const mutations = {
 export const actions = {
     loadPopularShows({ commit }) {
         const api = axios.create({
-            baseURL: 'http://localhost:8000/',
+            baseURL: apiUrl,
             headers: getAuthHeader()
         });
 
@@ -57,7 +57,7 @@ export const actions = {
     },
     loadMyShows({ commit }) {
         const api = axios.create({
-            baseURL: 'http://localhost:8000/',
+            baseURL: apiUrl,
             headers: getAuthHeader()
         });
 
@@ -74,7 +74,7 @@ export const actions = {
         const data = getShowData(show);
 
         const api = axios.create({
-            baseURL: 'http://localhost:8000/',
+            baseURL: apiUrl,
             headers: getAuthHeader()
         });
 
@@ -91,11 +91,11 @@ export const actions = {
     },
     removeFromMyShows({ commit, state }, { show }) {
         const api = axios.create({
-            baseURL: 'http://localhost:8000/',
+            baseURL: apiUrl,
             headers: getAuthHeader()
         });
 
-        api.delete('http://localhost:8000/userShows?tvmaze_id='+show.id)
+        api.delete('userShows?tvmaze_id='+show.id)
         .then(function (response) {
             console.log(response);
             commit('removeFromMyShows', { show: show })
