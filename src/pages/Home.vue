@@ -1,9 +1,10 @@
 <template lang="pug">
     div.home
         heroSection
-        div.popular-shows
-            h2.popular-shows__heading Popular shows
-            showList( v-if="popularShows" :shows="popularShows" )
+        div.container
+            div.popular-shows
+                h2.popular-shows__heading Popular shows
+                showList( v-if="popularShows" :shows="popularShows" )
 </template>
 
 <script>
@@ -34,6 +35,9 @@ export default {
 </script>
 
 <style lang="scss">
+    .home {
+        width: 100%;
+    }
     .popular-shows {
         &__heading {
             font-weight: 600;

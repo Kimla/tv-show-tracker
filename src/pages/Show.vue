@@ -1,25 +1,25 @@
 <template lang="pug">
     div.show( v-if="show" )
+        div.container
+            div.show__image-holder( v-if="image" )
+                img.show__image( :src="image" )
 
-        div.show__image-holder( v-if="image" )
-            img.show__image( :src="image" )
+            h1.show__title {{ show.name }}
+            p.show__genres {{ show.genres.join(", ") }}
+            div.show__summary( v-html="show.summary" )
 
-        h1.show__title {{ show.name }}
-        p.show__genres {{ show.genres.join(", ") }}
-        div.show__summary( v-html="show.summary" )
+            p <strong>Latest epsiode:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - {{ currentEpisodes.latest.name }} ({{ currentEpisodes.latest.airdate }})
+            p( v-if="currentEpisodes.next" ) <strong>Next epsiode:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - {{ currentEpisodes.next.name }} ({{ currentEpisodes.next.airdate }})
 
-        p <strong>Latest epsiode:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - {{ currentEpisodes.latest.name }} ({{ currentEpisodes.latest.airdate }})
-        p( v-if="currentEpisodes.next" ) <strong>Next epsiode:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - {{ currentEpisodes.next.name }} ({{ currentEpisodes.next.airdate }})
+            span.save-button( v-if="!isSaved" @click="saveShow()" )
+                img.navigation__icon( :src="starIcon")
 
-        span.save-button( v-if="!isSaved" @click="saveShow()" )
-            img.navigation__icon( :src="starIcon")
+            span.delete-button( v-if="isSaved" @click="deleteShow()" )
+                img.navigation__icon( :src="starFilledIcon")
 
-        span.delete-button( v-if="isSaved" @click="deleteShow()" )
-            img.navigation__icon( :src="starFilledIcon")
-
-        div.seasons
-            div.season-holder( v-for="season in seasons" )
-                showSeason( :season="season" )
+            div.seasons
+                div.season-holder( v-for="season in seasons" )
+                    showSeason( :season="season" )
 </template>
 
 <script>
@@ -118,6 +118,7 @@ export default {
 
 <style lang="scss">
     .show {
+        padding: 30px 0;
         &__image-holder {
             line-height: 0;
             margin-bottom: 10px;

@@ -1,24 +1,21 @@
 <template lang="pug">
-    div.register.form
-        h1 Register
+    div.loginPage
+        div.loginPage__inner
+            h1 Create an account
+            div.form
+                div.formInputs
+                    div.input-holder
+                        input.input( type="email" id="email" name="email" v-model="email" placeholder="Email..." )
+                    div.input-holder
+                        input.input( type="password" id="password" name="password" v-model="password" placeholder="Password..." )
+                    div.input-holder
+                        input.input( type="password" id="password-confirm" name="password-confirm" v-model="password2" placeholder="Confirm password..." )
+                div.formBottom
+                    div.button-holder
+                        buttonEl( :button="{ label: 'Register' }" @Clicked="register()" )
 
-        div.input-holder
-            label.label( for="email" ) Email
-            input.input( type="email" id="email" name="email" v-model="email" )
-        div.input-holder
-            label.label( for="password" ) Password
-            input.input( type="password" id="password" name="password" v-model="password" )
-
-        div.input-holder
-            label.label( for="password-confirm" ) Confirm Password
-            input.input( type="password" id="password-confirm" name="password-confirm" v-model="password2" )
-
-        div.form__bottom
-            div.login-link-holder
-                router-link.form-link( to="/login" ) Already have an account?
-
-            div.button-holder
-                buttonEl( :button="{ label: 'Register' }" @Clicked="register()" )
+        div.linkHolder
+            router-link.formLink( to="/login" ) Already have an account?
 </template>
 
 <script>
@@ -54,7 +51,7 @@ export default {
                 return false;
             }
 
-            axios.post(apiUrl+'register', {
+            axios.post(apiUrl+'/register', {
                 email,
                 password
             })

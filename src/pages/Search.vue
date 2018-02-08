@@ -1,13 +1,14 @@
 <template lang="pug">
     div.search
-        div.search-bar
-            input.search-bar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
-            div.search-bar__icon( @click="searchHandler()" )
-                img( :src="searchIcon" )
-        showList( v-if="showsData.length > 0" :shows="shows" )
-        loader( v-if="isLoading" )
-        div.message( v-if="zeroResults" )
-            p No results, try again!
+        div.container
+            div.search-bar
+                input.search-bar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
+                div.search-bar__icon( @click="searchHandler()" )
+                    img( :src="searchIcon" )
+            showList( v-if="showsData.length > 0" :shows="shows" )
+            loader( v-if="isLoading" )
+            div.message( v-if="zeroResults" )
+                p No results, try again!
 </template>
 
 <script>
@@ -75,6 +76,10 @@ export default {
 </script>
 
 <style lang="scss">
+    .search {
+        width: 100%;
+        padding-top: 30px;
+    }
     .search-bar {
         height: 48px;
         width: 100%;

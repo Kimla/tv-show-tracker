@@ -46,7 +46,7 @@ export const actions = {
             headers: getAuthHeader()
         });
 
-        api.get('popularShows')
+        api.get('/popularShows')
         .then(function (response) {
             console.log(response);
             commit('setPopularShows', { shows: response.data })
@@ -61,7 +61,7 @@ export const actions = {
             headers: getAuthHeader()
         });
 
-        api.get('userShows')
+        api.get('/userShows')
         .then(function (response) {
             console.log(response);
             commit('setMyShows', { myShows: response.data })
@@ -78,7 +78,7 @@ export const actions = {
             headers: getAuthHeader()
         });
 
-        api.post('userShows', {
+        api.post('/userShows', {
             ...data
         })
         .then(function (response) {
@@ -95,7 +95,7 @@ export const actions = {
             headers: getAuthHeader()
         });
 
-        api.delete('userShows?tvmaze_id='+show.id)
+        api.delete('/userShows?tvmaze_id='+show.id)
         .then(function (response) {
             console.log(response);
             commit('removeFromMyShows', { show: show })

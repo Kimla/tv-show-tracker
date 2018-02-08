@@ -1,21 +1,19 @@
 <template lang="pug">
-    div.login.form
-        h1 Login
+    div.loginPage
+        div.loginPage__inner
+            h1 Welcome back
+            div.form
+                div.formInputs
+                    div.input-holder
+                        input.input( type="email" id="email" name="email" v-model="email" placeholder="Email..." )
+                    div.input-holder
+                        input.input( type="password" id="password" name="password" v-model="password" placeholder="Password..." )
+                div.formBottom
+                    div.button-holder
+                        buttonEl( :button="{ label: 'Sign in' }" @Clicked="login()" )
 
-        div.input-holder
-            label.label( for="email" ) Email
-            input.input( type="email" id="email" name="email" v-model="email" )
-
-        div.input-holder
-            label.label( for="password" ) Password
-            input.input( type="password" id="password" name="password" v-model="password" )
-
-        div.form__bottom
-            div.register-link-holder
-                router-link.form-link( to="/register" ) Don't have an account?
-
-            div.button-holder
-                buttonEl( :button="{ label: 'Login' }" @Clicked="login()" )
+        div.linkHolder
+            router-link.formLink( to="/register" ) Don't have an account?
 </template>
 
 <script>
@@ -39,7 +37,7 @@ export default {
             const password = this.password;
             const _this = this;
 
-            axios.post(apiUrl+'login', {
+            axios.post(apiUrl+'/login', {
                 email,
                 password
             })
@@ -83,5 +81,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>

@@ -1,9 +1,11 @@
 <template lang="pug">
     div#app
         navigation
-        div.page
+
+        div.pageWrapper
             transition(name="transform" mode="out-in")
                 router-view
+
         notice
 </template>
 
@@ -28,8 +30,13 @@ export default {
 
 <style src="normalize.css/normalize.css"></style>
 <style lang="scss">
+@import './styles/main.scss';
     * {
         box-sizing: border-box;
+    }
+    html,
+    body {
+        height: 100%;
     }
     body {
         font-family: -apple-system, BlinkMacSystemFont,
@@ -40,7 +47,12 @@ export default {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-size: 16px;
-        color: #333;
+        color: #3c3c3b;
+    }
+    .pageWrapper {
+        min-height: 100vh;
+        padding-top: 54px;
+        display: flex;
     }
     button {
         padding: 0;
@@ -66,9 +78,6 @@ export default {
     h4 {
         font-weight: 300;
     }
-    .page {
-        padding: 30px 15px;
-    }
     h1 {
         font-size: 28px;
         margin-bottom: 20px;
@@ -86,20 +95,29 @@ export default {
         margin: 0 auto;
         max-width: 100%;
         .input-holder {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+        .input-holder:last-child {
+            margin-bottom: 0;
         }
         .input {
             width: 100%;
-            padding: 12px;
+            padding-bottom: 10px;
             font-size: 16px;
-            border: 1px solid #e8e8e8;
+            border: 0;
+            border-bottom: 2px solid #e7edec;
             outline: 0;
             border-radius: 0;
             -webkit-appearance: none;
             transition: border-color 0.25s;
+            color: #3c3c3b;
             &:focus {
                 border-color: #2196F3;
             }
+        }
+        .input::placeholder {
+            color: #3c3c3b;
+            font-weight: 400;
         }
         .label {
             display: block;
@@ -119,6 +137,10 @@ export default {
         .form-link {
             font-size: 15px;
         }
+    }
+
+    .container {
+        padding: 0 15px;
     }
 
     .transform-enter {

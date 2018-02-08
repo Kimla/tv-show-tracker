@@ -1,0 +1,82 @@
+.loginPage {
+    position: relative;
+    z-index: 1;
+    background: url('./assets/stranger_things.jpg') no-repeat center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparentize(#000, 0.75);
+    }
+    &__inner {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        padding: 40px 0;
+        padding-left: 30px;
+        width: 500px;
+        margin-left: auto;
+        max-width: 100%;
+    }
+    h1 {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-bottom: 24px;
+        font-size: 30px;
+        letter-spacing: 0.6px;
+    }
+    .linkHolder {
+        text-align: center;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: 30px;
+        z-index: 1;
+    }
+    .form {
+        background-color: #ffffff;
+        margin-right: 0;
+        padding: 40px 35px;
+        padding-bottom: 55px;
+        box-shadow: 1px 1.7px 43px 0 rgba(0, 0, 0, 0.1);
+        position: relative;
+        margin-bottom: 90px;
+    }
+    .formLink {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .formBottom {
+        position: absolute;
+        top: 100%;
+        right: 0;
+    }
+    .button {
+        width: 190px;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 26px 30px;
+        padding-left: 35px;
+        clip-path: polygon(22% 0, 100% 0, 100% 100%, 0% 100%);
+        transform: translateY(-50%);
+        font-size: 16px;
+        background-color: #FFD85A;
+        color: #3c3c3b;
+    }
+    .button::after {
+        content: '▶';
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%);
+    }
+}

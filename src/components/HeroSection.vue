@@ -59,9 +59,7 @@ export default {
 <style lang="scss">
 
     .hero-section {
-        margin-top: -30px;
-        width: calc(100% + 30px);
-        margin-left: -15px;
+        width: 100%;
         min-height: 350px;
         position: relative;
         display: flex;

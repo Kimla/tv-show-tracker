@@ -66,35 +66,40 @@ export default {
 </script>
 
 <style lang="scss">
-    .navigation {
-        box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.2);
-        position: relative;
-        &__list {
-            list-style: none;
-            display: flex;
-        }
-        &__list-item {
-            width: 25%;
-        }
-        &__link {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            cursor: pointer;
-        }
-        &__icon {
-            fill: #607D8B;
-        }
-        &__active-bar {
-            position: absolute;
-            left: 25%;
-            bottom: 0;
-            height: 3px;
-            width: 25%;
-            background-color: #2196F3;
-            transition: left 0.25s;
-        }
+.navigation {
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: #ffffff;
+    &__list {
+        list-style: none;
+        display: flex;
     }
+    &__list-item {
+        width: 25%;
+    }
+    &__link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        cursor: pointer;
+    }
+    &__icon {
+        fill: #607D8B;
+    }
+    &__active-bar {
+        position: absolute;
+        left: 25%;
+        bottom: 0;
+        height: 3px;
+        width: 25%;
+        background-color: #2196F3;
+        transition: left 0.25s;
+    }
+}
 </style>
