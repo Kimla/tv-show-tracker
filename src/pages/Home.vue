@@ -41,7 +41,7 @@ export default {
     .popular-shows {
         &__heading {
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
     }
 </style>
