@@ -89,6 +89,10 @@ export default {
         margin-bottom: 20px;
         line-height: 1.3;
     }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
     b,
     strong {
         font-weight: 600;

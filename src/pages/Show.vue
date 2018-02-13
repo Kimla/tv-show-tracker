@@ -1,21 +1,25 @@
 <template lang="pug">
     div.show( v-if="show" )
-        div.container
-            div.show__image-holder( v-if="image" )
-                img.show__image( :src="image" )
-
-            h1.show__title {{ show.name }}
-            p.show__genres {{ show.genres.join(", ") }}
-            div.show__summary( v-html="show.summary" )
-
-            p <strong>Latest epsiode:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - {{ currentEpisodes.latest.name }} ({{ currentEpisodes.latest.airdate }})
-            p( v-if="currentEpisodes.next" ) <strong>Next epsiode:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - {{ currentEpisodes.next.name }} ({{ currentEpisodes.next.airdate }})
-
+        div.showFixedTop.navigation
+            div.showFixedTop__back( @click="goBack()" )
+                <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 14H8.8l4.62-4.62c.394-.394.58-.864.58-1.38 0-.984-.813-2-2-2-.531 0-.994.193-1.38.58l-7.958 7.958C2.334 14.866 2 15.271 2 16s.279 1.08.646 1.447l7.974 7.973c.386.387.849.58 1.38.58 1.188 0 2-1.016 2-2 0-.516-.186-.986-.58-1.38L8.8 18H28a2 2 0 0 0 0-4z"/></svg>
+            h1.showFixedTop__title {{ show.name }}
             span.save-button( v-if="!isSaved" @click="saveShow()" )
                 img.navigation__icon( :src="starIcon")
 
             span.delete-button( v-if="isSaved" @click="deleteShow()" )
                 img.navigation__icon( :src="starFilledIcon")
+
+        div.container
+            div.show__top
+                div.show__image-holder( v-if="image" )
+                    img.show__image( :src="image" )
+                div.show__summary( v-html="show.summary" )
+
+            div( style="display:none" )
+                p.show__genres {{ show.genres.join(", ") }}
+                p <strong>Latest epsiode:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - {{ currentEpisodes.latest.name }} ({{ currentEpisodes.latest.airdate }})
+                p( v-if="currentEpisodes.next" ) <strong>Next epsiode:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - {{ currentEpisodes.next.name }} ({{ currentEpisodes.next.airdate }})
 
             div.seasons
                 div.season-holder( v-for="season in seasons" )
@@ -39,7 +43,7 @@ export default {
             show: false,
             episodes: [],
             starIcon,
-            starFilledIcon
+            starFilledIcon,
         }
     },
     methods: {
@@ -49,6 +53,9 @@ export default {
         deleteShow() {
             this.$store.dispatch('removeFromMyShows', { show: this.show })
         },
+        goBack() {
+            this.$router.push('/');
+        }
     },
     computed: {
         image() {
@@ -108,6 +115,7 @@ export default {
         })
         .then(function (response) {
             vm.show = response.data;
+            console.log(vm.show);
         })
         .catch(function (error) {
             console.log(error);
@@ -117,38 +125,75 @@ export default {
 </script>
 
 <style lang="scss">
-    .show {
-        padding: 30px 0;
-        &__image-holder {
-            line-height: 0;
-            margin-bottom: 10px;
+.showFixedTop {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    &__back {
+        width: 28px;
+        height: 28px;
+        svg {
+            width: 100%;
+            height: 100%;
         }
-        &__title {
-            margin-bottom: 15px;
+        path {
+            fill: #3c3c3b;
         }
-        &__genres {
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        &__summary {
-            max-width: 500px;
-        }
+    }
+    &__title {
+        width: calc(100% - 56px);
+        padding: 0 16px;
+        font-size: 18px;
+        margin-bottom: 0;
+        font-weight: 600;
     }
     .save-button,
     .delete-button {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         display: block;
-        margin-bottom: 20px;
         cursor: pointer;
         img {
             width: 100%;
             height: 100%;
         }
     }
-    .seasons {
-        padding-top: 10px;
-        margin-top: 15px;
-        border-top: 1px solid #e8e8e8;
+}
+.show {
+    padding: 30px 0;
+    &__top {
+        margin-bottom: 30px;
+        min-height: 170px;
     }
+    &__image-holder {
+        line-height: 0;
+        width: 120px;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        img {
+            border-radius: 5px;
+            box-shadow: 0 3px 10px 1px rgba(0,0,0,.05);
+        }
+    }
+    &__title {
+        margin-bottom: 15px;
+    }
+    &__genres {
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+    &__summary {
+        width: 100%;
+        font-size: 16px;
+        position: relative;
+    }
+}
+
+.seasons {
+    padding-top: 10px;
+    margin-top: 15px;
+    border-top: 1px solid #e8e8e8;
+}
 </style>

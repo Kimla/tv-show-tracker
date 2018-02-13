@@ -1,5 +1,5 @@
 <template lang="pug">
-    nav.navigation
+    nav.navigation( v-if="showNav" )
         ul.navigation__list
             li.navigation__list-item( v-for="item,key in menuItems" )
                 router-link.navigation__link( :to="item.path" )
@@ -23,6 +23,11 @@ export default {
                 this.activeBarPosition = -100;
             }
         }
+    },
+    computed: {
+        showNav() {
+            return this.$route.name !== 'show';
+        },
     },
     data () {
         return {
