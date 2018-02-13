@@ -48,6 +48,7 @@ export default {
         -moz-osx-font-smoothing: grayscale;
         font-size: 16px;
         color: #3c3c3b;
+        background-color: #fefefe;
     }
     .pageWrapper {
         min-height: 100vh;
@@ -59,9 +60,11 @@ export default {
         margin: 0;
         border: 0;
         outline: 0;
+        color: inherit;
     }
     a {
-        color: #2196F3;
+        color: inherit;
+        text-decoration: none;
     }
     ul,
     p,

@@ -55,22 +55,26 @@ export default {
 .show-list-item {
     width: 100%;
     display: flex;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e8e8e8;
-    text-decoration: none;
-    color: #333;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px 1px rgba(0,0,0,.05);
     &__image-holder {
         width: 80px;
         line-height: 0;
+        margin-top: -25px;
+        box-shadow: 0 3px 10px 1px rgba(0,0,0,.05);
         img {
             max-width: 100%;
             height: auto;
+            border-radius: 5px;
         }
     }
     &__content {
         width: calc(100% - 80px);
-        padding-left: 15px;
+        padding: 5px;
+        padding-left: 20px;
         p {
             margin-bottom: 5px;
         }
@@ -82,7 +86,7 @@ export default {
         font-size: 18px;
         font-weight: 600;
         margin: 0;
-        line-height: 1.1;
+        line-height: 1.25;
         margin-bottom: 5px;
     }
     &__genres {
