@@ -6,7 +6,7 @@
             h1.HeroSection__heading Tv shows
             p.HeroSection__preamble Keep track of your favorite tv shows.
             div.HeroSection__buttons
-                router-link.button( v-for="(button, key) in buttons" :to="button.link" ) {{ button.label }}
+                router-link.button( v-for="(button, key) in buttons" :key="key" :to="button.link" ) {{ button.label }}
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
     name: 'HeroSection',
     data() {
         return {
-            loggedOutButtons:  {
+            loggedInButtons:  {
                 register: {
                     label: 'Search',
                     link: '/search',
@@ -24,7 +24,7 @@ export default {
                     link: '/my-shows',
                 }
             },
-            loggedInButtons: {
+            loggedOutButtons: {
                 register: {
                     label: 'Register',
                     link: '/register',

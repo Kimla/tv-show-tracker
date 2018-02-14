@@ -1,26 +1,26 @@
 <template lang="pug">
     div#app
-        navigation
+        Navigation
 
         div.pageWrapper
             router-view
 
-        notice
+        Notice
 </template>
 
 <script>
-import navigation from './components/Navigation';
-import notice from './components/Notice';
+import Navigation from './components/Navigation';
+import Notice from './components/Notice';
 
 export default {
     name: 'app',
     components: {
-        navigation,
-        notice
+        Navigation,
+        Notice
     },
     created() {
         const token = localStorage.getItem("token");
-        if ( token ) {
+        if (token) {
             this.$store.dispatch('loadMyShows');
         }
     }
