@@ -20,13 +20,12 @@ export const store = new Vuex.Store({
         login: (state) => {
             state.isLoggedIn = true;
             router.replace("/");
-            location.reload(); // TODO remove and do something better.
         },
         logout: (state) => {
             localStorage.removeItem('token');
             state.isLoggedIn = false;
+            shows.state.myShows = [];
             router.replace("/");
-            location.reload(); // TODO remove and do something better.
         },
         setToken: (state, payload) => {
             this.token = payload;

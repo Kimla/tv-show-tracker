@@ -43,9 +43,10 @@ export default {
                 password
             })
             .then(function (response) {
-                if ( response.status === 200 ) {
+                if (response.status === 200) {
                     localStorage.setItem("token", response.data.token);
                     _this.$store.commit('login');
+                    _this.$store.commit('setMyShows', { myShows: response.data.shows });
                     _this.showSuccessNotice();
                 } else {
                     this.showErrorNotice();

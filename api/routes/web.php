@@ -13,7 +13,7 @@
 
 use Illuminate\Http\Request;
 
-$router->post('/login', 'AuthController@login');
+$router->post('/login', 'UserController@login');
 $router->post('/register', 'UserController@register');
 
 $router->get('/popularShows', 'ShowController@popularShows');

@@ -7,6 +7,9 @@ use App\UserShow;
 use App\Show;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class UserController extends Controller
 {
@@ -16,6 +19,30 @@ class UserController extends Controller
     public function __construct(JWTAuth $jwt)
     {
         $this->jwt = $jwt;
+    }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email'    => 'required|email|max:255',
+            'password' => 'required',
+        ]);
+
+        try {
+            if (! $token = $this->jwt->attempt($request->only('email', 'password'))) {
+                return response()->json(['user_not_found'], 404);
+            }
+        } catch (TokenExpiredException $e) {
+            return response()->json(['token_expired'], $e->getStatusCode());
+        } catch (TokenInvalidException $e) {
+            return response()->json(['token_invalid'], $e->getStatusCode());
+        } catch (JWTException $e) {
+            return response()->json(['token_absent' => $e->getMessage()], $e->getStatusCode());
+        }
+
+        $shows = $this->shows();
+
+        return response()->json(compact('token', 'shows'));
     }
 
     public function register(Request $request)
@@ -37,7 +64,7 @@ class UserController extends Controller
         return response($res);
     }
 
-    public function shows(Request $request) {
+    public function shows() {
         $user = $this->jwt->user();
 
         $userShows = $user->userShows()->get();

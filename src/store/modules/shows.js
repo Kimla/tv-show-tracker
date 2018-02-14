@@ -37,6 +37,9 @@ export const mutations = {
     setPopularShows: (state, { shows }) => {
         state.popularShows = shows;
     },
+    removeAllShow(state) {
+        state.myShows = [];
+    }
 };
 
 export const actions = {
