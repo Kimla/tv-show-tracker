@@ -1,20 +1,24 @@
 .button {
-    letter-spacing: 1px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     background-color: $primary;
     color: $primaryTextColor;
-    min-width: 140px;
-    padding: 14px 20px;
+    min-width: 120px;
+    padding: 12px 16px;
+    font-size: 14px;
+    letter-spacing: 0.6px;
     &__arrow {
         margin-left: 14px;
     }
 }
 
 .button--large {
+    font-weight: 600;
     min-width: 190px;
     padding: 19px 30px;
+    font-size: 16px;
+    letter-spacing: 1px;
 }
