@@ -1,28 +1,29 @@
 <template lang="pug">
-    div.search
+    div.Search
         div.container
-            div.search-bar
-                input.search-bar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
-                div.search-bar__icon( @click="searchHandler()" )
-                    img( :src="searchIcon" )
-            showList( v-if="showsData.length > 0" :shows="shows" )
-            loader( v-if="isLoading" )
-            div.message( v-if="zeroResults" )
+            div.searchBox
+                div.SearchBar
+                    input.SearchBar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
+                    div.SearchBar__icon( @click="searchHandler()" )
+                        img( :src="searchIcon" )
+            ShowList( v-if="showsData.length > 0" :shows="shows" )
+            Loader( v-if="isLoading" )
+            div.Search__message( v-if="zeroResults" )
                 p No results, try again!
 </template>
 
 <script>
 import axios from 'axios';
-import showList from '@/components/ShowList';
-import loader from '@/components/Loader';
-import searchIcon from '@/assets/search_white.svg';
+import ShowList from '@/components/ShowList';
+import Loader from '@/components/Loader';
+import searchIcon from '@/assets/search.svg';
 import {getShowData} from '@/helpers/helpers';
 
 export default {
-    name: 'search',
+    name: 'Search',
     components: {
-        showList,
-        loader
+        ShowList,
+        Loader
     },
     data () {
         return {
@@ -76,31 +77,29 @@ export default {
 </script>
 
 <style lang="scss">
-.search {
+@import '../styles/variables.scss';
+
+.Search {
     width: 100%;
     padding-top: 30px;
+    &__message {
+        padding: 30px 0;
+        text-align: center;
+        font-weight: 600;
+        font-size: 18px;
+    }
 }
-.search-bar {
+
+.SearchBar {
     height: 48px;
     width: 100%;
     position: relative;
-    margin-bottom: 30px;
     &__input {
-        border: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border: 1px solid #e8e8e8;
-        outline: 0;
+        padding: 13px;
+        border: 2px solid #e8e8e8;
         transition: border-color 0.25s;
-        border-radius: 0;
-        -webkit-appearance: none;
         &:focus {
-            border-color: #2196F3;
+            border-color: $primary;
         }
     }
     &__icon {
@@ -109,11 +108,11 @@ export default {
         position: absolute;
         right: 0;
         top: 0;
-        background-color: #2196F3;
-        padding: 12px;
+        background-color: $primary;
+        padding: 11px;
         img {
-            width: 24px;
-            height: 24px;
+            width: 100%;
+            height: 100%;
         }
     }
 }
