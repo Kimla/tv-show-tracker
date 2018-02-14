@@ -1,6 +1,6 @@
 <template lang="pug">
-    div.loginPage
-        div.loginPage__inner
+    div.formPage
+        div.formPage__inner
             h1 Create an account
             div.form
                 div.formInputs
@@ -12,7 +12,8 @@
                         input.input( type="password" id="password-confirm" name="password-confirm" v-model="password2" placeholder="Confirm password..." )
                 div.formBottom
                     div.button-holder
-                        buttonEl( :button="{ label: 'Register' }" @Clicked="register()" )
+                        button.button.button--large( type="button" @click="register()" ) Register
+                            span.button__arrow ▶
 
         div.linkHolder
             router-link.formLink( to="/login" ) Already have an account?
@@ -100,5 +101,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>

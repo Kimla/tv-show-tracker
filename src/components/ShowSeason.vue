@@ -30,24 +30,24 @@ export default {
 </script>
 
 <style lang="scss">
-    .show-season {
-        &__header {
-            padding: 10px 0;
-            border-bottom: 1px solid #e8e8e8;
-            cursor: pointer;
-            h3 {
-                font-size: 16px;
-                font-weight: 600;
-            }
-        }
-    }
-    .episodes {
-        padding: 15px 0;
-    }
-    .episode {
-        line-height: 1.3;
-        h4 {
+.show-season {
+    &__header {
+        padding: 10px 0;
+        border-bottom: 1px solid #e8e8e8;
+        cursor: pointer;
+        h3 {
+            font-size: 16px;
             font-weight: 600;
         }
     }
+}
+.episodes {
+    padding: 15px 0;
+}
+.episode {
+    line-height: 1.3;
+    h4 {
+        font-weight: 600;
+    }
+}
 </style>

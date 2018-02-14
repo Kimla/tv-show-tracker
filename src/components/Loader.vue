@@ -22,89 +22,62 @@ export default {
 </script>
 
 <style lang="scss">
-    .preloader {
-
-    }
-
     .sk-fading-circle {
-    margin: 0 auto;
-    width: 40px;
-    height: 40px;
-    position: relative;
+        margin: 0 auto;
+        width: 40px;
+        height: 40px;
+        position: relative;
     }
 
     .sk-fading-circle .sk-circle {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     .sk-fading-circle .sk-circle:before {
-    content: '';
-    display: block;
-    margin: 0 auto;
-    width: 15%;
-    height: 15%;
-    background-color: #2196f3;
-    border-radius: 100%;
-    -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
-          animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 15%;
+        height: 15%;
+        background-color: #2196f3;
+        border-radius: 100%;
+        animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
     }
     .sk-fading-circle .sk-circle2 {
-    -webkit-transform: rotate(30deg);
-      -ms-transform: rotate(30deg);
           transform: rotate(30deg);
     }
     .sk-fading-circle .sk-circle3 {
-    -webkit-transform: rotate(60deg);
-      -ms-transform: rotate(60deg);
           transform: rotate(60deg);
     }
     .sk-fading-circle .sk-circle4 {
-    -webkit-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
           transform: rotate(90deg);
     }
     .sk-fading-circle .sk-circle5 {
-    -webkit-transform: rotate(120deg);
-      -ms-transform: rotate(120deg);
           transform: rotate(120deg);
     }
     .sk-fading-circle .sk-circle6 {
-    -webkit-transform: rotate(150deg);
-      -ms-transform: rotate(150deg);
           transform: rotate(150deg);
     }
     .sk-fading-circle .sk-circle7 {
-    -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
           transform: rotate(180deg);
     }
     .sk-fading-circle .sk-circle8 {
-    -webkit-transform: rotate(210deg);
-      -ms-transform: rotate(210deg);
           transform: rotate(210deg);
     }
     .sk-fading-circle .sk-circle9 {
-    -webkit-transform: rotate(240deg);
-      -ms-transform: rotate(240deg);
           transform: rotate(240deg);
     }
     .sk-fading-circle .sk-circle10 {
-    -webkit-transform: rotate(270deg);
-      -ms-transform: rotate(270deg);
           transform: rotate(270deg);
     }
     .sk-fading-circle .sk-circle11 {
-    -webkit-transform: rotate(300deg);
-      -ms-transform: rotate(300deg);
           transform: rotate(300deg);
     }
     .sk-fading-circle .sk-circle12 {
-    -webkit-transform: rotate(330deg);
-      -ms-transform: rotate(330deg);
           transform: rotate(330deg);
     }
     .sk-fading-circle .sk-circle2:before {

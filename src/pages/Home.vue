@@ -35,13 +35,13 @@ export default {
 </script>
 
 <style lang="scss">
-    .home {
-        width: 100%;
+.home {
+    width: 100%;
+}
+.popular-shows {
+    &__heading {
+        font-weight: 600;
+        margin-bottom: 40px;
     }
-    .popular-shows {
-        &__heading {
-            font-weight: 600;
-            margin-bottom: 40px;
-        }
-    }
+}
 </style>

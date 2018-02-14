@@ -1,6 +1,6 @@
 <template lang="pug">
-    div.loginPage
-        div.loginPage__inner
+    div.formPage
+        div.formPage__inner
             h1 Welcome back
             div.form
                 div.formInputs
@@ -10,7 +10,8 @@
                         input.input( type="password" id="password" name="password" v-model="password" placeholder="Password..." )
                 div.formBottom
                     div.button-holder
-                        buttonEl( :button="{ label: 'Sign in' }" @Clicked="login()" )
+                        button.button.button--large( type="button" @click="login()" ) Sign in
+                            span.button__arrow ▶
 
         div.linkHolder
             router-link.formLink( to="/register" ) Don't have an account?

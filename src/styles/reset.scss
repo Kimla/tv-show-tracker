@@ -1,0 +1,63 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a,
+button {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.25s;
+}
+
+button {
+    font-weight: inherit;
+    cursor: pointer;
+    font-size: inherit;
+    background-color: transparent;
+    padding: 0;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea,
+input::placeholder,
+textarea::placeholder {
+    font-family: inherit;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    font-weight: inherit;
+    font-size: inherit;
+    width: 100%;
+}
+
+input[type='text'],
+textarea {
+    -webkit-appearance: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}

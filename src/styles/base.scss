@@ -1,0 +1,14 @@
+body {
+    font-family: $primaryFont;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    color: $primaryTextColor;
+    background-color: #fefefe;
+    font-weight: 400;
+}
+
+b,
+strong {
+    font-weight: 600;
+}

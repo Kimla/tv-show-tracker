@@ -76,45 +76,45 @@ export default {
 </script>
 
 <style lang="scss">
-    .search {
+.search {
+    width: 100%;
+    padding-top: 30px;
+}
+.search-bar {
+    height: 48px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+    &__input {
+        border: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        padding-top: 30px;
+        height: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #e8e8e8;
+        outline: 0;
+        transition: border-color 0.25s;
+        border-radius: 0;
+        -webkit-appearance: none;
+        &:focus {
+            border-color: #2196F3;
+        }
     }
-    .search-bar {
+    &__icon {
         height: 48px;
-        width: 100%;
-        position: relative;
-        margin-bottom: 30px;
-        &__input {
-            border: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #e8e8e8;
-            outline: 0;
-            transition: border-color 0.25s;
-            border-radius: 0;
-            -webkit-appearance: none;
-            &:focus {
-                border-color: #2196F3;
-            }
-        }
-        &__icon {
-            height: 48px;
-            width: 48px;
-            position: absolute;
-            right: 0;
-            top: 0;
-            background-color: #2196F3;
-            padding: 12px;
-            img {
-                width: 24px;
-                height: 24px;
-            }
+        width: 48px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #2196F3;
+        padding: 12px;
+        img {
+            width: 24px;
+            height: 24px;
         }
     }
+}
 </style>

@@ -57,48 +57,46 @@ export default {
 </script>
 
 <style lang="scss">
-
-    .hero-section {
+.hero-section {
+    width: 100%;
+    min-height: 350px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
+    color: #fff;
+    margin-bottom: 30px;
+    &__background {
         width: 100%;
-        min-height: 350px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+    &__overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: transparentize(#000, 0.75);
+    }
+    &__inner {
+        width: 500px;
+        text-align: center;
         position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
-        color: #fff;
-        margin-bottom: 30px;
-        &__background {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            object-fit: cover;
+        max-width: 100%;
+        padding: 50px 15px;
+        margin-bottom: 50px;
+        h1 {
+            color: #fff;
+            font-size: 42px;
         }
-        &__overlay {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: transparentize(#000, 0.75);
-        }
-        &__inner {
-            width: 500px;
-            text-align: center;
-            position: relative;
-            max-width: 100%;
-            padding: 50px 15px;
-            margin-bottom: 50px;
-            h1 {
-                color: #fff;
-                font-size: 42px;
-            }
-            p {
-                margin-bottom: 30px;
-            }
+        p {
+            margin-bottom: 30px;
         }
     }
-
+}
 </style>

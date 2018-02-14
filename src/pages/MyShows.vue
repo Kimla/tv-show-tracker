@@ -14,11 +14,6 @@ export default {
     components: {
         showList,
     },
-    data() {
-        return {
-
-        }
-    },
     computed: {
         myShows () {
             let myShows = this.$store.getters.myShows;
@@ -43,11 +38,4 @@ export default {
 </script>
 
 <style lang="scss">
-    h3 {
-        margin: 0;
-        line-height: 1.3;
-    }
-    a {
-        color: #2196F3;
-    }
 </style>
