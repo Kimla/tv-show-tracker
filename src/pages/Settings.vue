@@ -1,14 +1,15 @@
 <template lang="pug">
-    div.settings
-        h1 Settings
-        buttonEl( :button="{ label: 'Logout' }" @Clicked="logout()" )
+    div.Settings
+        div.container
+            h1 Settings
+            buttonEl( :button="{ label: 'Logout' }" @Clicked="logout()" )
 </template>
 
 <script>
 import buttonEl from '@/components/Button';
 
 export default {
-    name: 'settings',
+    name: 'Settings',
     components: {
         buttonEl,
     },
@@ -32,4 +33,9 @@ export default {
 </script>
 
 <style lang="scss">
+.Settings {
+    padding-top: 30px;
+    width: 100%;
+    text-align: center;
+}
 </style>

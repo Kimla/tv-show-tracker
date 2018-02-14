@@ -1,5 +1,5 @@
 <template lang="pug">
-    nav.Navigation( v-if="showNav" )
+    nav.Navigation.fixedHeader( v-if="showNav" )
         ul.Navigation__list
             li.Navigation__listItem( v-for="item,key in menuItems" )
                 router-link.Navigation__link( :to="item.path" )
@@ -75,13 +75,6 @@ export default {
 @import '../styles/variables.scss';
 
 .Navigation {
-    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.10);
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-    background-color: #ffffff;
     &__list {
         list-style: none;
         display: flex;

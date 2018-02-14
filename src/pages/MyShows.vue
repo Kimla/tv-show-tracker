@@ -1,16 +1,17 @@
 <template lang="pug">
-    div.my-shows
-        showList( v-if="myShows" :shows="myShows" )
-        div.my-shows__message( v-else )
-            h3 You have no saved shows, find them
-                router-link(:to="'/search'") here!
+    div.MyShows
+        div.container
+            showList( v-if="myShows" :shows="myShows" )
+            div.MyShows__message( v-else )
+                p You currently don't have any saved shows.
+                router-link.button(:to="'/search'") Find shows
 </template>
 
 <script>
 import showList from '@/components/ShowList'
 
 export default {
-    name: 'myShows',
+    name: 'MyShows',
     components: {
         showList,
     },
@@ -38,4 +39,14 @@ export default {
 </script>
 
 <style lang="scss">
+.MyShows {
+    width: 100%;
+    padding-top: 15px;
+    &__message {
+        padding: 15px 0;
+        text-align: center;
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
 </style>
