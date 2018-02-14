@@ -1,15 +1,14 @@
 <template lang="pug">
     div.Search
         div.container
-            div.searchBox
-                div.SearchBar
-                    input.SearchBar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
-                    div.SearchBar__icon( @click="searchHandler()" )
-                        img( :src="searchIcon" )
-            ShowList( v-if="showsData.length > 0" :shows="shows" )
-            Loader( v-if="isLoading" )
-            div.Search__message( v-if="zeroResults" )
-                p No results, try again!
+            div.SearchBar
+                input.SearchBar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
+                div.SearchBar__icon( @click="searchHandler()" )
+                    img( :src="searchIcon" )
+        ShowList( v-if="showsData.length > 0" :shows="shows" )
+        Loader( v-if="isLoading" )
+        div.Search__message( v-if="zeroResults" )
+            p No results, try again!
 </template>
 
 <script>
