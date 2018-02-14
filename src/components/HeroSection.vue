@@ -6,18 +6,12 @@
             h1.HeroSection__heading Tv shows
             p.HeroSection__preamble Keep track of your favorite tv shows.
             div.HeroSection__buttons
-                buttonEl( v-for="(button, key) in buttons" :key="key" :button="button" )
+                router-link.button( v-for="(button, key) in buttons" :to="button.link" ) {{ button.label }}
 </template>
 
 <script>
-import buttonEl from './Button';
-import backgroundImage from '@/assets/stranger_things.jpg';
-
 export default {
     name: 'HeroSection',
-    components: {
-        buttonEl,
-    },
     data() {
         return {
             loggedOutButtons:  {
