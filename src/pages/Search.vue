@@ -83,7 +83,6 @@ export default {
     width: 100%;
     padding-top: 30px;
     &__message {
-        padding: 30px 0;
         text-align: center;
         font-weight: 600;
         font-size: 18px;
@@ -94,6 +93,7 @@ export default {
     height: 48px;
     width: 100%;
     position: relative;
+    margin-bottom: 30px;
     &__input {
         padding: 13px;
         border: 2px solid #e8e8e8;
