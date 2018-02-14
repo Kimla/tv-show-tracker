@@ -1,23 +1,17 @@
 <template lang="pug">
-    div.show-list
-        div( v-for="(show, key) in shows" :key="show.id" )
-            showListItem( :show="show" )
+    div.ShowList
+        ShowListItem( v-for="(show, key) in shows" :show="show" :key="show.id" )
 </template>
 
 <script>
-import showListItem from './ShowListItem';
+import ShowListItem from './ShowListItem';
 
 export default {
-    name: 'showList',
+    name: 'ShowList',
     props: ['shows'],
     components: {
-        showListItem,
+        ShowListItem,
     },
-    data () {
-        return {
-
-        }
-    }
 }
 </script>
 

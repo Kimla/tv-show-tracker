@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style lang="scss">
+$buttonMargin: 12px;
+
 .HeroSection {
     width: 100%;
     min-height: 350px;
@@ -81,11 +83,11 @@ export default {
         margin-bottom: 40px;
     }
     &__buttons {
-        margin-left: -12px;
-        margin-right: -12px;
+        margin-left: -$buttonMargin;
+        margin-right: -$buttonMargin;
     }
     .button {
-        margin: 0 12px;
+        margin: 0 $buttonMargin;
     }
 }
 </style>

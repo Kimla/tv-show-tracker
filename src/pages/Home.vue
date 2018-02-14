@@ -2,20 +2,19 @@
     div.home
         HeroSection
         div.container
-            div.popular-shows
-                h2.popular-shows__heading Popular shows
-                showList( v-if="popularShows" :shows="popularShows" )
+            h2 Popular shows
+            ShowList( v-if="popularShows" :shows="popularShows" )
 </template>
 
 <script>
 import HeroSection from '@/components/HeroSection';
-import showList from '@/components/ShowList';
+import ShowList from '@/components/ShowList';
 
 export default {
     name: 'home',
     components: {
         HeroSection,
-        showList
+        ShowList
     },
     computed: {
         popularShows () {
@@ -31,11 +30,5 @@ export default {
 <style lang="scss">
 .home {
     width: 100%;
-}
-.popular-shows {
-    &__heading {
-        font-weight: 600;
-        margin-bottom: 40px;
-    }
 }
 </style>
