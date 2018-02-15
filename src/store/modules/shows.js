@@ -1,5 +1,4 @@
-import axios from 'axios';
-import {getShowData, getAuthHeader} from '@/helpers/helpers';
+import {getShowData, api} from '@/helpers/helpers';
 
 export const state = {
     myShows: [],
@@ -44,11 +43,6 @@ export const mutations = {
 
 export const actions = {
     loadPopularShows({ commit }) {
-        const api = axios.create({
-            baseURL: apiUrl,
-            headers: getAuthHeader()
-        });
-
         api.get('/popularShows')
         .then(function (response) {
             console.log(response);
@@ -59,11 +53,6 @@ export const actions = {
         });
     },
     loadMyShows({ commit }) {
-        const api = axios.create({
-            baseURL: apiUrl,
-            headers: getAuthHeader()
-        });
-
         api.get('/userShows')
         .then(function (response) {
             console.log(response);
@@ -75,11 +64,6 @@ export const actions = {
     },
     addToMyShows({ commit, state }, { show }) {
         const data = getShowData(show);
-
-        const api = axios.create({
-            baseURL: apiUrl,
-            headers: getAuthHeader()
-        });
 
         api.post('/userShows', {
             ...data
@@ -93,10 +77,6 @@ export const actions = {
         });
     },
     removeFromMyShows({ commit, state }, { show }) {
-        const api = axios.create({
-            baseURL: apiUrl,
-            headers: getAuthHeader()
-        });
 
         api.delete('/userShows?tvmaze_id='+show.id)
         .then(function (response) {

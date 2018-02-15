@@ -28,3 +28,8 @@ export function getAuthHeader() {
     const token = localStorage.getItem("token");
     return {'Authorization': `Bearer ${token}`}
 }
+
+export const api = axios.create({
+    baseURL: apiUrl,
+    headers: getAuthHeader()
+});

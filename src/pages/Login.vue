@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import {api} from '@/helpers/helpers';
 import buttonEl from '@/components/Button';
 
 export default {
@@ -38,7 +38,7 @@ export default {
             const password = this.password;
             const _this = this;
 
-            axios.post(apiUrl+'/login', {
+            api.post('/login', {
                 email,
                 password
             })

@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import {api} from '@/helpers/helpers';
 import buttonEl from '@/components/Button'
 
 export default {
@@ -52,7 +52,7 @@ export default {
                 return false;
             }
 
-            axios.post(apiUrl+'/register', {
+            api.post('/register', {
                 email,
                 password
             })
