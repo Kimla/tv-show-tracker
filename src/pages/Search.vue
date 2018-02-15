@@ -35,15 +35,7 @@ export default {
     },
     computed: {
         shows() {
-            let showsOrg = this.showsData.map(item => item.show);
-            let shows = [];
-
-            for (let i = 0; i < showsOrg.length; i++) {
-                const show = getShowData(showsOrg[i]);
-                shows.push(show);
-            }
-
-            return shows;
+            return this.showsData.map(item => getShowData(item.show));
         }
     },
     methods: {
