@@ -37,9 +37,9 @@ export default {
         return {
             id: this.$route.params.id,
             show: false,
+            activeSeason: 1,
             starIcon,
             starFilledIcon,
-            activeSeason: 1
         }
     },
     methods: {
@@ -58,9 +58,7 @@ export default {
     },
     computed: {
         image() {
-            if ( !this.show.image ) {
-                return false;
-            }
+            if (!this.show.image) return false;
 
             return this.show.image.medium.replace(/^http:\/\//i, 'https://');
         },
@@ -68,26 +66,16 @@ export default {
             return this.$store.getters.myShows.find(item => item.tvmaze_id == this.id);
         },
         seasons() {
-            if (!this.show ) return false;
-
             return this.show._embedded.seasons;
         },
         episodes() {
-            if (!this.show) return false;
-
             return this.show._embedded.episodes.filter(item => item.season === this.activeSeason);
         },
     },
-    mounted() {
-        const vm = this;
+    created() {
         axios.get(`https://api.tvmaze.com/shows/${this.id}?embed[]=seasons&embed[]=episodes`)
-        .then(function (response) {
-            vm.show = response.data;
-            console.log(vm.show);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+            .then(response => this.show = response.data)
+            .catch(error => console.log(error));
     }
 }
 </script>
