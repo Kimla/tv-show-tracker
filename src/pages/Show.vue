@@ -15,38 +15,37 @@
                 div.show__image-holder( v-if="image" )
                     img.show__image( :src="image" )
                 div.show__summary( v-html="show.summary" )
-
-            div( style="display:none" )
-                p.show__genres {{ show.genres.join(", ") }}
-                p <strong>Latest epsiode:</strong> S{{ currentEpisodes.latest.season }}E{{ currentEpisodes.latest.number }} - {{ currentEpisodes.latest.name }} ({{ currentEpisodes.latest.airdate }})
-                p( v-if="currentEpisodes.next" ) <strong>Next epsiode:</strong> S{{ currentEpisodes.next.season }}E{{ currentEpisodes.next.number }} - {{ currentEpisodes.next.name }} ({{ currentEpisodes.next.airdate }})
-
-            div.seasons
-                div.season-holder( v-for="season in seasons" )
-                    showSeason( :season="season" )
+            ShowSeasons( :seasons="seasons" :active="activeSeason" @changed="activeSeasonChanged" )
+            ShowEpisode( v-for="episode in episodes" :episode="episode" :key="episode.id" )
+            p.noEpisodesFound( v-if="episodes.length < 1" ) No episodes found in this season
 </template>
 
 <script>
 import axios from 'axios';
-import showSeason from '@/components/ShowSeason';
+import ShowSeasons from '@/components/ShowSeasons';
+import ShowEpisode from '@/components/ShowEpisode';
 import starFilledIcon from '@/assets/star_filled.svg'
 import starIcon from '@/assets/star_border.svg'
 
 export default {
     name: 'show',
     components: {
-        showSeason,
+        ShowSeasons,
+        ShowEpisode,
     },
     data() {
         return {
             id: this.$route.params.id,
             show: false,
-            episodes: [],
             starIcon,
             starFilledIcon,
+            activeSeason: 1
         }
     },
     methods: {
+        activeSeasonChanged(activeSeason) {
+            this.activeSeason = activeSeason;
+        },
         saveShow() {
             this.$store.dispatch('addToMyShows', { show: this.show })
         },
@@ -69,50 +68,19 @@ export default {
             return this.$store.getters.myShows.find(item => item.tvmaze_id == this.id);
         },
         seasons() {
-            if ( !this.show ) {
-                return false;
-            }
-            let episodes = this.show._embedded.episodes;
-            let seasons = {};
-            for (var i = 0; i < episodes.length; i++) {
-                if ( !seasons[episodes[i].season] ) {
-                    seasons[episodes[i].season] = {};
-                    seasons[episodes[i].season]["episodes"] = [];
-                }
-                seasons[episodes[i].season]["label"] = "Season " + episodes[i].season;
-                seasons[episodes[i].season]["episodes"].push(episodes[i]);
-            }
-            return seasons;
-        },
-        currentEpisodes() {
-            let episodes = this.show._embedded.episodes;
-            let currentTime = Date.now();
-            let results = {};
+            if (!this.show ) return false;
 
-            for (var i = episodes.length - 1; i >= 0; i--) {
-                let episodeDate = Date.parse(episodes[i].airdate);
-                if (episodeDate < currentTime) {
-                    let latest = episodes[i];
-                    let next = false;
-                    if (episodes[i + 1]) {
-                        next = episodes[i + 1];
-                    }
-                    return {
-                        latest,
-                        next
-                    };
-                    break;
-                }
-            }
-        }
+            return this.show._embedded.seasons;
+        },
+        episodes() {
+            if (!this.show) return false;
+
+            return this.show._embedded.episodes.filter(item => item.season === this.activeSeason);
+        },
     },
     mounted() {
         const vm = this;
-        axios.get(`https://api.tvmaze.com/shows/${this.id}`, {
-            params: {
-                embed: 'episodes'
-            }
-        })
+        axios.get(`https://api.tvmaze.com/shows/${this.id}?embed[]=seasons&embed[]=episodes`)
         .then(function (response) {
             vm.show = response.data;
             console.log(vm.show);
@@ -188,11 +156,5 @@ export default {
         font-size: 16px;
         position: relative;
     }
-}
-
-.seasons {
-    padding-top: 10px;
-    margin-top: 15px;
-    border-top: 1px solid #e8e8e8;
 }
 </style>
