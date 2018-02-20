@@ -14,6 +14,6 @@ class UserShow extends Model
 
     public function show()
     {
-        return $this->hasOne('App\Show');
+        return $this->belongsTo('App\Show');
     }
 }

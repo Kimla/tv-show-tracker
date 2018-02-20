@@ -45,7 +45,6 @@ export const actions = {
     loadPopularShows({ commit }) {
         api.get('/popularShows')
         .then(function (response) {
-            console.log(response);
             commit('setPopularShows', { shows: response.data })
         })
         .catch(function (error) {

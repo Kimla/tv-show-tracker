@@ -66,13 +66,12 @@ class UserController extends Controller
 
     public function shows() {
         $user = $this->jwt->user();
-
-        $userShows = $user->userShows()->get();
+        $userShows = $user->userShows()->with('show')->get();
 
         $shows = [];
 
         foreach ($userShows as $key => $userShow) {
-            $shows[] = Show::find($userShow['show_id']);
+            $shows[] = $userShow->show;
         }
 
         return $shows;
