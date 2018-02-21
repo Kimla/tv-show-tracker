@@ -23,3 +23,6 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->post('/userShows', 'UserController@addUserShow');
     $router->delete('/userShows', 'UserController@removeUserShow');
 });
+
+$router->get('/cacheShows', 'ShowController@cacheShows');
+$router->get('/getTrailer/{id}', 'ShowController@getTrailer');

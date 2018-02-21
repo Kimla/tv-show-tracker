@@ -15,6 +15,15 @@
                 div.show__image-holder( v-if="image" )
                     img.show__image( :src="image" )
                 div.show__summary( v-html="show.summary" )
+
+            div.trailerButtonHolder( v-if="trailer" )
+                button.button( @click="playTrailer" ) Play trailer
+
+            div.trailerHolder( v-if="trailerPlaying" @click="trailerPlaying = false" )
+                div.trailerHolder__inner
+                    div.iframeWrapper
+                        <iframe :src="trailerPlaying" allowfullscreen scrolling="no"></iframe>
+
             ShowSeasons( :seasons="seasons" :active="activeSeason" @changed="activeSeasonChanged" )
             ShowEpisode( v-for="episode in episodes" :episode="episode" :key="episode.id" )
             p.noEpisodesFound( v-if="episodes.length < 1" ) No episodes found in this season
@@ -22,6 +31,7 @@
 
 <script>
 import axios from 'axios';
+import {api} from '@/helpers/helpers';
 import ShowSeasons from '@/components/ShowSeasons';
 import ShowEpisode from '@/components/ShowEpisode';
 import starFilledIcon from '@/assets/star_filled.svg'
@@ -37,6 +47,8 @@ export default {
         return {
             id: this.$route.params.id,
             show: false,
+            trailer: false,
+            trailerPlaying: false,
             activeSeason: 1,
             starIcon,
             starFilledIcon,
@@ -54,6 +66,25 @@ export default {
         },
         goBack() {
             this.$router.push('/');
+        },
+        playTrailer() {
+            let width = 400;
+
+            if (window.innerWidth > 999) {
+                width = 854;
+            }
+
+            this.trailerPlaying = this.trailer + '&width=' + width;
+        },
+        getTrailer() {
+            api.get(`/getTrailer/${this.show.externals.imdb}`)
+                .then(response => {
+                    console.log(response.data);
+                    if (response.data !== 'error') {
+                        this.trailer = response.data;
+                    }
+                })
+                .catch(error => console.log(error));
         }
     },
     computed: {
@@ -74,13 +105,51 @@ export default {
     },
     created() {
         axios.get(`https://api.tvmaze.com/shows/${this.id}?embed[]=seasons&embed[]=episodes`)
-            .then(response => this.show = response.data)
+            .then(response => {
+                this.show = response.data;
+                this.getTrailer();
+            })
             .catch(error => console.log(error));
     }
 }
 </script>
 
 <style lang="scss">
+.trailerHolder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparentize(#000000, 0.2);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    &__inner {
+        width: 400px;
+        min-width: 400px;
+        max-width: 100%;
+        @media (min-width: 1000px) {
+            width: 854px;
+        }
+    }
+}
+.iframeWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}
 .showFixedTop {
     display: flex;
     align-items: center;

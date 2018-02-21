@@ -18,7 +18,7 @@ class CreateShowsTable extends Migration
             $table->string('title');
             $table->string('image');
             $table->string('genres');
-            $table->integer('tvmaze_id');
+            $table->integer('tvmaze_id')->unique();
             $table->timestamps();
         });
     }
