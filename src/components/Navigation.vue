@@ -4,8 +4,6 @@
             li.Navigation__listItem( v-for="item,key in menuItems" )
                 router-link.Navigation__link( :to="item.path" )
                     div.Navigation__iconHolder( :class="key" v-html="item.icon" )
-
-        span.Navigation__activeBar( :style="{ left: activeBarPosition + '%' }" )
 </template>
 
 <script>
@@ -16,11 +14,6 @@ import {settingsIcon} from '@/helpers/icons'
 
 export default {
     name: 'Navigation',
-    watch: {
-        '$route' (to, from) {
-            this.setActiveBar();
-        }
-    },
     computed: {
         showNav() {
             return this.$route.name !== 'show';
