@@ -88,8 +88,10 @@ export default {
         .yellow {
             transition: 0.25s;
         }
-        &.myShows .yellow {
-            transition: 0s;
+        .settings-first,
+        .settings-second,
+        .settings-third, {
+            transition: stroke 0.25s, transform 0.75s;
         }
     }
     .router-link-exact-active .yellow {
@@ -99,7 +101,7 @@ export default {
         animation: beat ease-out 1s;
     }
     .router-link-exact-active .home {
-        animation: flip ease 1s;
+        animation: flip ease-out 0.75s;
         animation-fill-mode: forwards;
     }
     .router-link-exact-active .search {
