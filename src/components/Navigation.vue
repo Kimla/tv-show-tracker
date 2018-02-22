@@ -3,15 +3,16 @@
         ul.Navigation__list
             li.Navigation__listItem( v-for="item,key in menuItems" )
                 router-link.Navigation__link( :to="item.path" )
-                    img.Navigation__icon( :src="item.icon" :alt="key" )
+                    div.Navigation__iconHolder( :class="key" v-html="item.icon" )
+
         span.Navigation__activeBar( :style="{ left: activeBarPosition + '%' }" )
 </template>
 
 <script>
-import homeIcon from '@/assets/home.svg'
-import searchIcon from '@/assets/search.svg'
-import myShowsIcon from '@/assets/star_filled.svg'
-import settingsIcon from '@/assets/settings.svg'
+import {homeIcon} from '@/helpers/icons'
+import {searchIcon} from '@/helpers/icons'
+import {myShowsIcon} from '@/helpers/icons'
+import {settingsIcon} from '@/helpers/icons'
 
 export default {
     name: 'Navigation',
@@ -33,7 +34,7 @@ export default {
                     icon: homeIcon,
                     isActive: true,
                     order: 0,
-                    path: '/'
+                    path: '/',
                 },
                 search: {
                     icon: searchIcon,
@@ -56,18 +57,6 @@ export default {
             }
         }
     },
-    methods: {
-        setActiveBar() {
-            if (this.menuItems[this.$route.name]) {
-                this.activeBarPosition = this.menuItems[this.$route.name].order * 25;
-            } else {
-                this.activeBarPosition = -100;
-            }
-        }
-    },
-    mounted() {
-        this.setActiveBar();
-    }
 }
 </script>
 
@@ -87,17 +76,20 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 15px;
+        padding: 14px 15px;
         cursor: pointer;
     }
-    &__activeBar {
-        position: absolute;
-        left: 25%;
-        bottom: 0;
-        height: 4px;
-        width: 25%;
-        background-color: $primary;
-        transition: left 0.25s;
+    &__iconHolder {
+        width: 28px;
+        height: 28px;
+        &.home {
+            width: 29px;
+            height: 29px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 </style>
