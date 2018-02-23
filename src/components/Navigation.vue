@@ -4,6 +4,7 @@
             li.Navigation__listItem( v-for="item,key in menuItems" )
                 router-link.Navigation__link( :to="item.path" )
                     div.Navigation__iconHolder( :class="key" v-html="item.icon" )
+                    div.Navigation__label {{ item.label }}
 </template>
 
 <script>
@@ -25,24 +26,28 @@ export default {
             menuItems: {
                 home: {
                     icon: homeIcon,
+                    label: 'Home',
                     isActive: true,
                     order: 0,
                     path: '/',
                 },
                 search: {
                     icon: searchIcon,
+                    label: 'Search',
                     isActive: false,
                     order: 1,
                     path: '/search'
                 },
                 myShows: {
                     icon: myShowsIcon,
+                    label: 'Saved',
                     isActive: false,
                     order: 2,
                     path: '/my-shows'
                 },
                 settings: {
                     icon: settingsIcon,
+                    label: 'Settings',
                     isActive: false,
                     order: 3,
                     path: '/settings'
@@ -67,23 +72,38 @@ export default {
     }
     &__link {
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 15px;
+        text-align: center;
+        padding: 8px 10px;
         cursor: pointer;
+        display: block;
+    }
+    &__label {
+        font-size: 12px;
+        color: #999;
+        line-height: 1;
+        .router-link-exact-active & {
+            color: $primary;
+        }
     }
     &__iconHolder {
-        width: 28px;
-        height: 28px;
+        width: 25px;
+        height: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 6px;
         &.home {
-            width: 29px;
-            height: 29px;
+            width: 27px;
+            height: 27px;
+            margin-bottom: 4px;
+        }
+        &.search {
+            position: relative;
+            left: -1px;
         }
         svg {
             width: 100%;
             height: 100%;
-
         }
         .yellow {
             transition: 0.25s;
