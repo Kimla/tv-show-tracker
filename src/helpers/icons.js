@@ -35,6 +35,42 @@ export const myShowsIcon =
 </svg>
 `;
 
+export const hearthIcon =
+`
+<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 3.389S10.925 1.5 13.778 1.5c2.853 0 4.722 1.889 4.722 4.722 0 6.624-7.516 12.278-8.485 12.278-.968 0-8.515-5.674-8.515-12.278C1.5 3.39 3.39 1.5 6.222 1.5 9.056 1.5 10 3.389 10 3.389z" class="yellow" stroke="#999" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+
+export const calendarIcon =
+`
+<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <rect id="calendar-icon-a" y="1" width="18" height="18" rx="3"/>
+    <mask id="calendar-icon-b" x="0" y="0" width="18" height="18" fill="#fff">
+      <use xlink:href="#calendar-icon-a"/>
+    </mask>
+  </defs>
+  <g transform="translate(1)" fill="none" fill-rule="evenodd">
+    <use class="yellow" stroke="#999" mask="url(#calendar-icon-b)" stroke-width="2" stroke-linecap="square" xlink:href="#calendar-icon-a"/>
+    <path class="yellow" d="M4.5.5v2M13.5.5v2" stroke="#999" stroke-linecap="round"/>
+    <path class="yellow" d="M.5 6.5h17" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+    <path class="yellow" d="M10 11h1M13 11h1M10 14h1M7 14h1M4 14h1M7 11h1" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+`;
+
+export const tvIcon =
+`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+    <g fill="none" class="yellow" stroke="#999" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7.48 2.5l7.73 5.95 7.74-5.95"/>
+      <path d="M26 8.5H4A1.5 1.5 0 0 0 2.5 10v15A1.5 1.5 0 0 0 4 26.5h.5v1h21v-1h.5a1.5 1.5 0 0 0 1.5-1.5V10A1.5 1.5 0 0 0 26 8.5z"/>
+      <path d="M25.21 23.36a2 2 0 0 1-1.83 1.78c-1.92.15-5.25.36-8.38.36s-6.48-.22-8.42-.37a2 2 0 0 1-1.83-1.76A49.2 49.2 0 0 1 4.5 18a49.13 49.13 0 0 1 .26-5.38 2 2 0 0 1 1.83-1.76c1.9-.15 5.22-.36 8.42-.36s6.49.21 8.38.36a2 2 0 0 1 1.83 1.78A50.85 50.85 0 0 1 25.5 18a50.59 50.59 0 0 1-.29 5.36z"/>
+    </g>
+</svg>
+`;
+
 export const settingsIcon =
 `
 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
