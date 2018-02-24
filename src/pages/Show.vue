@@ -2,13 +2,9 @@
     div.show( v-if="show" )
         div.showFixedTop.fixedHeader
             div.showFixedTop__back( @click="goBack()" )
-                <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 14H8.8l4.62-4.62c.394-.394.58-.864.58-1.38 0-.984-.813-2-2-2-.531 0-.994.193-1.38.58l-7.958 7.958C2.334 14.866 2 15.271 2 16s.279 1.08.646 1.447l7.974 7.973c.386.387.849.58 1.38.58 1.188 0 2-1.016 2-2 0-.516-.186-.986-.58-1.38L8.8 18H28a2 2 0 0 0 0-4z"/></svg>
+                img.showFixedTop__backArrow( src="../assets/arrow-grey.svg" )
             h1.showFixedTop__title {{ show.name }}
-            span.save-button( v-if="!isSaved" @click="saveShow()" )
-                img.navigation__icon( :src="starIcon")
-
-            span.delete-button( v-if="isSaved" @click="deleteShow()" )
-                img.navigation__icon( :src="starFilledIcon")
+            span.save-button( :class="{ isSaved: isSaved }" @click="saveShow()" v-html="hearthIcon" )
 
         div.container
             div.show__top
@@ -34,8 +30,7 @@ import axios from 'axios';
 import {api} from '@/helpers/helpers';
 import ShowSeasons from '@/components/ShowSeasons';
 import ShowEpisode from '@/components/ShowEpisode';
-import starFilledIcon from '@/assets/star_filled.svg'
-import starIcon from '@/assets/star_border.svg'
+import {hearthIcon} from '@/helpers/icons';
 
 export default {
     name: 'show',
@@ -50,8 +45,7 @@ export default {
             trailer: false,
             trailerPlaying: false,
             activeSeason: 1,
-            starIcon,
-            starFilledIcon,
+            hearthIcon,
         }
     },
     methods: {
@@ -59,10 +53,11 @@ export default {
             this.activeSeason = activeSeason;
         },
         saveShow() {
-            this.$store.dispatch('addToMyShows', { show: this.show })
-        },
-        deleteShow() {
-            this.$store.dispatch('removeFromMyShows', { show: this.show })
+            if (this.isSaved) {
+                this.$store.dispatch('removeFromMyShows', { show: this.show })
+            } else {
+                this.$store.dispatch('addToMyShows', { show: this.show })
+            }
         },
         goBack() {
             this.$router.push('/');
@@ -115,6 +110,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/variables.scss';
+
 .trailerHolder {
     position: fixed;
     top: 0;
@@ -154,16 +151,15 @@ export default {
     display: flex;
     align-items: center;
     padding: 0 15px;
+    height: 59px;
     &__back {
-        width: 28px;
-        height: 28px;
-        svg {
+        width: 24px;
+        height: 24px;
+        img {
             width: 100%;
             height: 100%;
         }
-        path {
-            fill: #3c3c3b;
-        }
+        transform: rotate(180deg);
     }
     &__title {
         width: calc(100% - 56px);
@@ -172,15 +168,22 @@ export default {
         margin-bottom: 0;
         font-weight: 600;
     }
-    .save-button,
-    .delete-button {
+    .save-button {
         width: 28px;
         height: 28px;
         display: block;
         cursor: pointer;
-        img {
+        svg {
             width: 100%;
             height: 100%;
+        }
+        path {
+            transition: 0.25s;
+            stroke: $primary;
+        }
+        &.isSaved path {
+            stroke: transparent;
+            fill: $primary;
         }
     }
 }
