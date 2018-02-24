@@ -137,8 +137,8 @@ export default {
             width: 100%;
             height: 100%;
         }
-        .yellow,
-        .yellow-fill {
+        .stroke,
+        .fill {
             transition: 0.25s;
         }
         .settings-first,
@@ -147,10 +147,10 @@ export default {
             transition: stroke 0.25s, transform 0.75s;
         }
     }
-    .router-link-exact-active .yellow {
+    .router-link-exact-active .stroke {
         stroke: $primary;
     }
-    .router-link-exact-active .yellow-fill {
+    .router-link-exact-active .fill {
         fill: $primary;
     }
     .router-link-exact-active .myShows {
