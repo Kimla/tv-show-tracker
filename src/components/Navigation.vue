@@ -12,6 +12,8 @@ import {homeIcon} from '@/helpers/icons'
 import {searchIcon} from '@/helpers/icons'
 import {myShowsIcon} from '@/helpers/icons'
 import {settingsIcon} from '@/helpers/icons'
+import {loginIcon} from '@/helpers/icons'
+import {registerIcon} from '@/helpers/icons'
 
 export default {
     name: 'Navigation',
@@ -19,39 +21,52 @@ export default {
         showNav() {
             return this.$route.name !== 'show';
         },
+        menuItems() {
+            if (this.$store.getters.isLoggedIn) {
+                return { ...this.items, ...this.authedItems };
+            }
+
+            return { ...this.items, ...this.unAuthedItems };
+        }
     },
     data () {
         return {
             activeBarPosition: 0,
-            menuItems: {
+            items: {
                 home: {
                     icon: homeIcon,
                     label: 'Home',
-                    isActive: true,
-                    order: 0,
                     path: '/',
                 },
                 search: {
                     icon: searchIcon,
                     label: 'Search',
-                    isActive: false,
-                    order: 1,
-                    path: '/search'
+                    path: '/search',
                 },
+            },
+            authedItems: {
                 myShows: {
                     icon: myShowsIcon,
                     label: 'Saved',
-                    isActive: false,
-                    order: 2,
-                    path: '/my-shows'
+                    path: '/my-shows',
                 },
                 settings: {
                     icon: settingsIcon,
                     label: 'Settings',
-                    isActive: false,
-                    order: 3,
-                    path: '/settings'
+                    path: '/settings',
                 },
+            },
+            unAuthedItems: {
+                login: {
+                    icon: loginIcon,
+                    label: 'Sign in',
+                    path: '/login',
+                },
+                register: {
+                    icon: registerIcon,
+                    label: 'Register',
+                    path: '/register',
+                }
             }
         }
     },
@@ -101,11 +116,16 @@ export default {
             position: relative;
             left: -1px;
         }
+        &.login {
+            position: relative;
+            left: -2px;
+        }
         svg {
             width: 100%;
             height: 100%;
         }
-        .yellow {
+        .yellow,
+        .yellow-fill {
             transition: 0.25s;
         }
         .settings-first,
@@ -113,28 +133,47 @@ export default {
         .settings-third, {
             transition: stroke 0.25s, transform 0.75s;
         }
+        .arrow {
+            transition: 0.5s;
+        }
     }
     .router-link-exact-active .yellow {
         stroke: darken($primary, 15%);
     }
+    .router-link-exact-active .yellow-fill {
+        fill: darken($primary, 15%);
+    }
     .router-link-exact-active .myShows {
         animation: beat ease-out 1s;
     }
-    .router-link-exact-active .home {
+    .router-link-exact-active .home,
+    .router-link-exact-active .register {
         animation: flip ease-out 0.75s;
         animation-fill-mode: forwards;
     }
-    .router-link-exact-active .search {
+    .router-link-exact-active .search, {
         animation: search ease-out 1s;
     }
     .router-link-exact-active .settings-first {
         transform: translateY(5px);
     }
-     .router-link-exact-active .settings-second {
+    .router-link-exact-active .settings-second {
         transform: translateY(-8px);
     }
     .router-link-exact-active .settings-third {
         transform: translateY(8px);
+    }
+    .router-link-exact-active .login .arrow {
+        animation: arrow 0.75s;
+    }
+}
+
+@keyframes arrow {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
     }
 }
 
