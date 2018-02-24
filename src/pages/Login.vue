@@ -11,7 +11,7 @@
                 div.formBottom
                     div.button-holder
                         button.button.button--large( type="button" @click="login()" ) Sign in
-                            span.button__arrow ▶
+                            img.button__arrow( src="../assets/arrow.svg" )
 
         div.linkHolder
             router-link.formLink( to="/register" ) Don't have an account?
