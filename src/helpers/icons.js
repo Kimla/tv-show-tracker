@@ -112,8 +112,12 @@ export const settingsIcon =
 
 export const loginIcon =
 `
-<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-  <path class="yellow-fill" fill="#999" d="M24 26c6.6 0 12-5.4 12-12S30.6 2 24 2 12 7.4 12 14s5.4 12 12 12zm0-22c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10S18.5 4 24 4zM33 28H15C7.8 28 2 33.8 2 41v5h2v-5c0-6.1 4.9-11 11-11h18c6.1 0 11 4.9 11 11v5h2v-5c0-7.2-5.8-13-13-13z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+  <g fill="none" class="yellow" stroke="#999" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26.72 3.28a9.49 9.49 0 0 0-15.91 9.08l-1.48.74 1.26 1.26-1.26 1.27H8.07v1.26L6.8 18.15H5.54v1.26l-1.26 1.26H3v1.26L.5 24.46v5h5l10.13-10.05 1.26 1.26.74-1.48a9.49 9.49 0 0 0 9.09-15.91z"/>
+    <circle cx="23" cy="7" r="2.5"/>
+    <path d="M4.5 25.5l9-9"/>
+  </g>
 </svg>
 `;
 
