@@ -5,6 +5,7 @@
                 router-link.Navigation__link( :to="item.path" )
                     div.Navigation__iconHolder( :class="key" v-html="item.icon" )
                     div.Navigation__label {{ item.label }}
+                    span.test
 </template>
 
 <script>
@@ -91,6 +92,23 @@ export default {
         padding: 8px 10px;
         cursor: pointer;
         display: block;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -7px;
+            margin-top: -7px;
+            background-color: $primary;
+            border-radius: 100%;
+            height: 14px;
+            width: 14px;
+            opacity: 0;
+        }
+        &.router-link-exact-active::after {
+            animation: effect ease 0.5s;
+        }
     }
     &__label {
         font-size: 12px;
@@ -131,10 +149,10 @@ export default {
         }
     }
     .router-link-exact-active .yellow {
-        stroke: darken($primary, 15%);
+        stroke: $primary;
     }
     .router-link-exact-active .yellow-fill {
-        fill: darken($primary, 15%);
+        fill: $primary;
     }
     .router-link-exact-active .myShows {
         animation: beat ease-out 1s;
@@ -160,6 +178,16 @@ export default {
     .router-link-exact-active .login .arrow {
         animation: arrow 0.75s;
     }
+}
+@keyframes effect {
+  0%   {
+    opacity: 0.8;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(5);
+  }
 }
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {transform: rotate(0deg);}
