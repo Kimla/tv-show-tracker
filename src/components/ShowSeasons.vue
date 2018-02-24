@@ -1,7 +1,7 @@
 <template lang="pug">
     div.seasons( v-if="seasons" )
         div.seasons__active( @click="toggle" )  Season {{ activeSeason }}
-            span.seasons__arrow ▶
+            img.seasons__arrow( src="../assets/arrow.svg" )
         div.seasons__holder( :class="{ isOpen: isOpen }" )
             div.seasons__item( v-for="season in seasons" @click="change(season.number)" ) Season {{ season.number }}
 </template>
@@ -39,11 +39,15 @@ export default {
     margin: 30px 0;
     text-align: left;
     padding: 12px 0;
-    font-size: 16px;
+    font-size: 14px;
+    letter-spacing: 0.6px;
     font-weight: 600;
+    color: #ffffff;
+    width: 170px;
     position: relative;
     background-color: $primary;
     box-shadow: $boxShadow;
+    border-radius: $borderRadius;
     &__holder {
         transform: scaleY(0);
         position: absolute;
@@ -60,7 +64,8 @@ export default {
     }
     &__arrow {
         display: inline-block;
-        font-size: 14px;
+        width: 18px;
+        height: 18px;
         margin-left: 10px;
         position: absolute;
         top: 50%;
@@ -74,6 +79,7 @@ export default {
         padding: 10px 15px;
         border-bottom: 1px solid #f8f8f8;
         font-size: 14px;
+        color: $primaryTextColor;
         &:last-child {
             border-bottom: 0;
         }
