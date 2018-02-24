@@ -5,7 +5,6 @@
                 router-link.Navigation__link( :to="item.path" )
                     div.Navigation__iconHolder( :class="key" v-html="item.icon" )
                     div.Navigation__label {{ item.label }}
-                    span.test
 </template>
 
 <script>

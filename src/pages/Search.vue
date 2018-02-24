@@ -3,8 +3,8 @@
         div.container
             div.SearchBar
                 input.SearchBar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
-                div.SearchBar__icon( @click="searchHandler()" )
-                    img( :src="searchIcon" )
+                div.SearchBar__icon( @click="searchHandler()" v-html="searchIcon" )
+
         ShowList( v-if="showsData.length > 0" :shows="shows" )
         Loader( v-if="isLoading" )
         div.Search__message( v-if="zeroResults" )
@@ -15,8 +15,8 @@
 import axios from 'axios';
 import ShowList from '@/components/ShowList';
 import Loader from '@/components/Loader';
-import searchIcon from '@/assets/search.svg';
 import {getShowData} from '@/helpers/helpers';
+import {searchIcon} from '@/helpers/icons'
 
 export default {
     name: 'Search',
@@ -89,9 +89,6 @@ export default {
         padding: 13px;
         border: 2px solid #e8e8e8;
         transition: border-color 0.25s;
-        &:focus {
-            border-color: $primary;
-        }
     }
     &__icon {
         height: 48px;
@@ -100,10 +97,13 @@ export default {
         right: 0;
         top: 0;
         background-color: $primary;
-        padding: 11px;
-        img {
+        padding: 12px;
+        svg {
             width: 100%;
             height: 100%;
+        }
+        .yellow {
+            stroke: #ffffff;
         }
     }
 }
