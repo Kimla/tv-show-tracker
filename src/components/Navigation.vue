@@ -140,13 +140,13 @@ export default {
         animation: beat ease-out 1s;
     }
     .router-link-exact-active .home,
-    .router-link-exact-active .register,
-    .router-link-exact-active .login {
+    .router-link-exact-active .register {
         animation: flip ease-out 0.75s;
         animation-fill-mode: forwards;
     }
-    .router-link-exact-active .search, {
-        animation: search ease-out 1s;
+    .router-link-exact-active .search,
+    .router-link-exact-active .login {
+        animation: bounce ease-out 1s;
     }
     .router-link-exact-active .settings-first {
         transform: translateY(5px);
@@ -161,17 +161,7 @@ export default {
         animation: arrow 0.75s;
     }
 }
-
-@keyframes arrow {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-@keyframes search {
+@keyframes bounce {
     0%, 20%, 50%, 80%, 100% {transform: rotate(0deg);}
     40% {transform: rotate(20deg);}
     60% {transform:rotate(10deg);}
