@@ -116,10 +116,6 @@ export default {
             position: relative;
             left: -1px;
         }
-        &.login {
-            position: relative;
-            left: -2px;
-        }
         svg {
             width: 100%;
             height: 100%;
@@ -133,9 +129,6 @@ export default {
         .settings-third, {
             transition: stroke 0.25s, transform 0.75s;
         }
-        .arrow {
-            transition: 0.5s;
-        }
     }
     .router-link-exact-active .yellow {
         stroke: darken($primary, 15%);
@@ -147,7 +140,8 @@ export default {
         animation: beat ease-out 1s;
     }
     .router-link-exact-active .home,
-    .router-link-exact-active .register {
+    .router-link-exact-active .register,
+    .router-link-exact-active .login {
         animation: flip ease-out 0.75s;
         animation-fill-mode: forwards;
     }
