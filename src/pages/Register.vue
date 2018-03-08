@@ -21,13 +21,9 @@
 
 <script>
 import {api} from '@/helpers/helpers';
-import buttonEl from '@/components/Button'
 
 export default {
     name: 'register',
-    components: {
-        buttonEl,
-    },
     data() {
         return {
             email: '',

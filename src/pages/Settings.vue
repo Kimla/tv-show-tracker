@@ -2,17 +2,13 @@
     div.Settings
         div.container
             h1 Settings
-            buttonEl( :button="{ label: 'Logout' }" @Clicked="logout()" )
+            div.button( @click="logout()" )
+                div.button__inner Logout
 </template>
 
 <script>
-import buttonEl from '@/components/Button';
-
 export default {
     name: 'Settings',
-    components: {
-        buttonEl,
-    },
     methods: {
         logout() {
             this.$store.commit('logout');

@@ -2,7 +2,7 @@
     div.Search
         div.container
             div.SearchBar
-                input.SearchBar__input( type="text" placeholder="Search here..." ref='search' v-model="keyword" @keyup.enter="searchHandler()" )
+                input.SearchBar__input( type="text" placeholder="Search here..." v-model="keyword" @keyup.enter="searchHandler()" autofocus )
                 div.SearchBar__icon( @click="searchHandler()" v-html="searchIcon" )
 
         ShowList( v-if="showsData.length > 0" :shows="shows" )
@@ -61,9 +61,6 @@ export default {
             });
         },
     },
-    mounted() {
-        this.$refs.search.focus();
-    }
 }
 </script>
 

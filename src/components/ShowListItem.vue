@@ -34,7 +34,7 @@ $imageWidth: 80px;
     background-color: #ffffff;
     padding: 10px;
     border-radius: $borderRadius;
-    box-shadow: $boxShadow;
+    box-shadow: $boxShadowDarker;
     &:first-child {
         margin-top: 35px;
     }

@@ -19,13 +19,9 @@
 
 <script>
 import {api} from '@/helpers/helpers';
-import buttonEl from '@/components/Button';
 
 export default {
     name: 'login',
-    components: {
-        buttonEl,
-    },
     data() {
         return {
             email: '',
