@@ -1,6 +1,9 @@
 <template lang="pug">
     div.HeroSection
-        img.HeroSection__background.ab100( src="../assets/stranger_things.jpg" )
+        picture.HeroSection__background.ab100
+          <source class="HeroSection__background ab100" srcset="../assets/stranger_things_small.webp" type="image/webp">
+          <source class="HeroSection__background ab100" srcset="../assets/stranger_things_small.jpg" type="image/jpeg">
+          <img class="HeroSection__background ab100" src="../assets/stranger_things_small.jpg" alt="Stranger Things">
         div.HeroSection__overlay.ab100
         div.HeroSection__inner
             h1.HeroSection__heading Tv shows

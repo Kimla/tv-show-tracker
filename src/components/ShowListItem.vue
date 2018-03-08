@@ -1,7 +1,7 @@
 <template lang="pug">
     router-link.ShowListItem( :to="link" )
         div.ShowListItem__imageHolder( v-if="show.image" )
-            img.ShowListItem__image( :src="show.image" )
+            img.ShowListItem__image( :src="show.image" :alt="show.title" )
         div.ShowListItem__content
             h2.ShowListItem__title {{ show.title }}
             p.ShowListItem__genres {{ show.genres }}
